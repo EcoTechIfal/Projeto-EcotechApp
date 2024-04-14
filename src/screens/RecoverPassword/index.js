@@ -1,9 +1,23 @@
 import React from "react";
 import { Text, View, TextInput, KeyboardAvoidingView} from "react-native";
 import { TouchableOpacity } from "react-native";
+import firebase from "../../recursos/firebase";
+import { sendEmailVerification, sendPasswordResetEmail } from "firebase/auth";
 
 export default function RecoverPassword(){
     const [email, setEmail] = React.useState("")
+    const auth = firebase.auth
+
+    function Recover(emailRecover){
+        sendPasswordResetEmail(auth, emailRecover)
+        .then(()=>{
+            console.log("Email de recuperação enviado com sucesso")
+            alert("Email de recuperação enviado")
+        }).catch((error)=>{
+            console.log("Error no envio do email de recuperação")
+            alert("Erro no envio do email, recarregue e tente novamente")
+        })
+    }
     return(
         <KeyboardAvoidingView>
             <View>
@@ -15,9 +29,9 @@ export default function RecoverPassword(){
                 </View>
                 <View>
                     <Text>E-mail</Text>
-                    <TextInput value="Email" placeholder="Digite seu e-mail" onChangeText={setEmail}/>
+                    <TextInput  placeholder="Digite seu e-mail" onChangeText={setEmail}/>
                 </View>
-                <TouchableOpacity><Text>ENVIAR</Text></TouchableOpacity>
+                <TouchableOpacity onPress={()=> Recover(email)}><Text>ENVIAR</Text></TouchableOpacity>
             </View>
         </KeyboardAvoidingView>
     )

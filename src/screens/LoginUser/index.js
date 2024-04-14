@@ -2,11 +2,29 @@
 import React from "react";
 import { View, Text, Button, TouchableOpacity, KeyboardAvoidingView,TextInput } from "react-native";
 import Styles from "./style";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import firebase from "../../recursos/firebase";
 
 export default function LoginUser({navigation}){
     const [email, setEmail] = React.useState("")
     const [senha, setSenha] = React.useState("")
+    const auth = firebase.auth
 
+    function Login(email, senha){
+        signInWithEmailAndPassword(auth, email,senha)
+        .then((userCredential) => {
+            console.log('Login sucesso!');
+            navigation.replace("Home")
+        })
+        .catch(error => {
+          alert("Email ou senha inválidos")
+      });
+      
+      }
+      React.useEffect(()=>{
+        setEmail("ecotechifal@gmail.com")
+        setSenha("meioambiente")
+      })
     return(
         <KeyboardAvoidingView>
             
@@ -24,7 +42,7 @@ export default function LoginUser({navigation}){
                 </TouchableOpacity>
 
                 <TouchableOpacity>
-                    <Text onPress={()=> navigation.replace("Home")}>Entrar</Text>
+                    <Text onPress={()=> Login(email, senha)}>Entrar</Text>
                 </TouchableOpacity>
                 <View>
                     <Text>Não tem uma conta?</Text>
@@ -35,3 +53,4 @@ export default function LoginUser({navigation}){
         </KeyboardAvoidingView>
     )
 }
+

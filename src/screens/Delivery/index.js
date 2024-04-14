@@ -1,4 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome"
 
 import React from "react";
 
@@ -15,7 +16,7 @@ export default function Delivery({navigation}){
             <View>
                 <Text>Tipo de Material</Text>
                 <View>
-                    <Text>Icon</Text>
+                    <Icon name="home" size={30} color="black"/>
                     <Text>{tipo}</Text>
                 </View>
                 <Text>{quantidade}</Text>
@@ -28,14 +29,14 @@ export default function Delivery({navigation}){
                 <View>
                     <Text>Peso</Text>
                     <View>
-                        <Text>Icon</Text>
+                        <Icon name="home" size={30} color="black"/>
                         <Text>{pesoKg}</Text>
                     </View>
                 </View>
                 <View>
                     <Text>Data da entrega</Text>
                     <View>
-                        <Text>Icon</Text>
+                        <Icon name="calendar" size={30} color="black"/>
                         <Text>{data}</Text>
                     </View>
                 </View>

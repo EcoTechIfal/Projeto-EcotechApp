@@ -1,5 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
+import Icon from "react-native-vector-icons/FontAwesome"
+
 
 export default function HistoricalUser({navigation}){
     const [nome, setNome] = React.useState("Sem nome")
@@ -19,17 +21,12 @@ export default function HistoricalUser({navigation}){
                     <Text>{hora}</Text>
                 </View>
                 <View>
-                    <Text>Icon</Text>
+                    <Icon name="map-pin" size={30} color="black"/>
                     <Text>IFAL</Text>
                 </View>
                 <Text>{status}</Text>
                 <View>
-                    <View></View>
                     <TouchableOpacity><Text  onPress={()=> navigation.replace("Comprovante de retirada")}>Visualizar</Text></TouchableOpacity>
-                    <View>
-                        <Text>Icon</Text>
-                        <Text>{pontos}</Text>
-                    </View>
                 </View>
             </View>
         </View>

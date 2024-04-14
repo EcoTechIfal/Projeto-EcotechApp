@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
+import Icon from "react-native-vector-icons/FontAwesome"
 
 export default function HistoricalCollector(){
     const [data, setData] = React.useState("Sem data")
@@ -18,7 +19,7 @@ export default function HistoricalCollector(){
                     <Text>{hora}</Text>
                 </View>
                 <View>
-                    <Text>Icon</Text>
+                    <Icon name="home" size={30} color="black"/>
                     <Text>IFAL</Text>
                 </View>
                 <Text>{status}</Text>
@@ -26,7 +27,7 @@ export default function HistoricalCollector(){
                     <View></View>
                     <TouchableOpacity><Text>Visualizar</Text></TouchableOpacity>
                     <View>
-                        <Text>Icon</Text>
+                        <Icon name="home" size={30} color="black"/>
                         <Text>{pontos}</Text>
                     </View>
                 </View>

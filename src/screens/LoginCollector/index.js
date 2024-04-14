@@ -8,6 +8,18 @@ export default function LoginCollector({navigation}){
     const [email, setEmail] = React.useState("")
     const [senha, setSenha] = React.useState("")
 
+    function Login(email, senha){
+        signInWithEmailAndPassword(auth, email,senha)
+        .then((userCredential) => {
+            console.log('Login sucesso!');
+            navigation.replace("Home Coletor")
+        })
+        .catch(error => {
+          alert("Email ou senha inválidos")
+      });
+      
+      }
+
     return(
         <KeyboardAvoidingView>
             
@@ -25,7 +37,7 @@ export default function LoginCollector({navigation}){
                 </TouchableOpacity>
 
                 <TouchableOpacity>
-                    <Text onPress={()=> navigation.replace("Home Coletor")}>Entrar</Text>
+                    <Text onPress={()=> Login()}>Entrar</Text>
                 </TouchableOpacity>
             </View>
 
