@@ -4,6 +4,7 @@ import Styles from "./style"
 import firebase from '../../recursos/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import crud from '../../recursos/crud';
+import { buscarDados } from '../../funciotons/buscarDados';
 
 export default function RegisterUser({navigation}){
 
@@ -17,14 +18,13 @@ export default function RegisterUser({navigation}){
     
     const auth = firebase.auth;
 
-    function Register(email, senha){
+    function Register(){
         createUserWithEmailAndPassword(auth, email, senha)
         .then((userCredential) => {
         const user = userCredential.user;
         const uid = user.uid
         console.log('Usuário criado com sucesso!');
         Inserir(uid)
-        navigation.replace("Home")
         })
         .catch(error => {
           if (error.code === 'auth/email-already-in-use') {
@@ -37,10 +37,23 @@ export default function RegisterUser({navigation}){
           console.error(error);
         });
     }
+
     function Inserir(uid){
-        crud.insert({cpf, email, endereco, nome, numero, user, uid})
+       crud.insert({cpf, email, endereco, nome, celular, nomeUser, uid})
+        alert(`Usuário ${nome} cadastrado, agora faça login`)
+        navigation.replace("Login Usuário", {email: email, senha: senha})
     }
   
+    React.useEffect(()=>{
+        setNome("Dev o melhor que ta tendo")
+        setNomeUser("Dev")
+        setCelular("não tenho")
+        setEmail("dev@gmail.com")
+        setSenha(123456)
+        setCpf("não posso dizer")
+        setEndereco("Web")
+    },[])
+    
     return (
         
         <KeyboardAvoidingView>
@@ -49,7 +62,7 @@ export default function RegisterUser({navigation}){
                     <Text>Nome:</Text>
                     <TextInput placeholder="Digite o nome completo"
                     style={Styles.form}
-                    onChangeText={text => setNome(text)}
+                    onChangeText={setNome}
                     value={nome}
                     />
                 </View>
@@ -57,7 +70,7 @@ export default function RegisterUser({navigation}){
                     <Text>Nome de Usuário:</Text>
                     <TextInput placeholder="Digite o nome completo"
                     style={Styles.form}
-                    onChangeText={text => setNomeUser(text)}
+                    onChangeText={setNomeUser}
                     value={nomeUser}
                     />
                 </View>
@@ -65,7 +78,7 @@ export default function RegisterUser({navigation}){
                     <Text>celular:</Text>
                     <TextInput placeholder="Digite o Numero de celular"
                     style={Styles.form}
-                    onChangeText={text => setCelular(text)}
+                    onChangeText={setCelular}
                     value={celular}
                     keyboardType="numeric"
                     />
@@ -74,7 +87,7 @@ export default function RegisterUser({navigation}){
                     <Text> email:</Text>
                     <TextInput placeholder="Digite o email"
                     style={Styles.form}
-                    onChangeText={text => setEmail(text)}
+                    onChangeText={setEmail}
                     value={email}
                     />
                 </View>
@@ -82,7 +95,7 @@ export default function RegisterUser({navigation}){
                     <Text>senha:</Text>
                     <TextInput placeholder="Digite a senha"
                     style={Styles.form}
-                    onChangeText={text => setSenha(text)}
+                    onChangeText={setSenha}
                     value={senha}
                     secureTextEntry={true}
                     /> 
@@ -91,7 +104,7 @@ export default function RegisterUser({navigation}){
                     <Text>endereco:</Text>
                     <TextInput placeholder=" Digite o Endereço"
                     style={Styles.form}
-                    onChangeText={text => setEndereco(text)}
+                    onChangeText={setEndereco}
                     value={endereco}
                     />
                 </View>
@@ -99,12 +112,12 @@ export default function RegisterUser({navigation}){
                     <Text>cpf:</Text>
                     <TextInput placeholder="Digite cpf"
                     style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }}
-                    onChangeText={text => setCpf(text)}
+                    onChangeText={setCpf}
                     value={cpf}
                     />
                 </View>
                 {(cpf == "" || email == "" || endereco == "" || senha == "" || celular == "" || nome == "") ? 
-                (<TouchableOpacity>
+                (<TouchableOpacity onPress={()=> Inserir()}>
                     <Text>Concluir cadastro</Text>
                 </TouchableOpacity>) :
                 (<TouchableOpacity onPress={()=> Register()}>

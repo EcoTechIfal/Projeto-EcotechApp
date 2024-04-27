@@ -1,34 +1,56 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { FlatList, View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome"
 
 
-export default function HistoricalUser({navigation}){
-    const [nome, setNome] = React.useState("Sem nome")
-    const [data, setData] = React.useState("Sem data")
-    const [hora, setHora] = React.useState("Sem hora")
-    const [status, setStatus] = React.useState("Sem status")
-    const [pontos, setPontos] = React.useState(0)
+export default function HistoricalUser({navigation, route}){
+
+    const dados = route.params.dados
+    const uid = route.params.uid
+    const dadosColetas = route.params.dadosColetas
 
     return(
         <View>
-            <Text>Olá, {nome}</Text>
-            <Text>Você não possui notificações</Text>
+            <Text>Olá, {dados.nomeUser}</Text>
             <Text>Histórico</Text>
+        
+            <FlatList
+        data={dadosColetas}
+        renderItem={({item}) =>{
+          return(  
             <View>
+                <View style={Styles.line}></View>
+
                 <View>
-                    <Text>{data}</Text>
-                    <Text>{hora}</Text>
+                    <View style={Styles.blockstatus}>
+                        <Text style={Styles.date}>{item.data}</Text>
+                        <Text style={Styles.time}>{item.horario}</Text>
+                    </View>
+
+                    <View style={Styles.icons}>
+                        <Icon name="map-pin" size={20} color="black"/>
+                        <Text style={Styles.ifal}>IFAL</Text>
+                    </View>
+
+                {item.status == 0 ? <Text style={[Styles.status, {backgroundColor: "red"}]} >Aguardando Entrega</Text> : <Text style={[Styles.status, {backgroundColor: "#B0E9C1"}]}>Entrega Completa</Text>}
+                <View style={Styles.bottom}>
+                    <TouchableOpacity onPress={()=> navigation.navigate("Detalhes de Coletar", {entrega: item, nome: dados.nome, uid: uid, dados: dados} )} style={Styles.touch}>
+                        <Text style={Styles.view}>Visualizar</Text>
+                    </TouchableOpacity>
+
+                    <View style={Styles.points}>
+                        <Icon name="trophy" size={30} color="black"/>
+                        <Text>{pontos}</Text>
+                    </View>
                 </View>
-                <View>
-                    <Icon name="map-pin" size={30} color="black"/>
-                    <Text>IFAL</Text>
                 </View>
-                <Text>{status}</Text>
-                <View>
-                    <TouchableOpacity><Text  onPress={()=> navigation.replace("Comprovante de retirada")}>Visualizar</Text></TouchableOpacity>
-                </View>
+
+                <View style={Styles.line}></View>        
             </View>
+          )  
+        }}
+        KeyExtractor={(item)=> item.id}/>    
+                
         </View>
     )
 }

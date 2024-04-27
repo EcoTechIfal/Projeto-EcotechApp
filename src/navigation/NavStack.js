@@ -10,14 +10,14 @@ import Sponsors from "../screens/Sponsors"
 import Profile from "../screens/Profile"
 import SetProfile from "../screens/SetProfile"
 import Configuration from "../screens/Configuration";
-import ScheduleDelivery from "../screens/ScheduleDelivery"
 import HistoricalUser from "../screens/HistoricalUser";
 import HistoricalCollector from "../screens/HistoricalCollector";
 import Proof from "../screens/Proof";
-import Delivery from "../screens/Delivery";
-import HomeTabs from "./HomeTabs";
-import BottomNav from "./BottomNav";
+import ConfirmDelivery from "../screens/ConfirmDelivery";
+import BottomNavUser from "./BottomNavUser";
 import MainScreenCollector from "../screens/MainScreenCollector";
+import BottomNavCollector from "./BottomNavColllector";
+import DetailsDelivery from "../screens/DetailsDelivery";
 
 
 const Stack = createStackNavigator()
@@ -35,13 +35,14 @@ export default function NavStack(){
                 <Stack.Screen name="Perfil Usuário" component={Profile}/>
                 <Stack.Screen name="Editar Perfil" component={SetProfile}/>
                 <Stack.Screen name="Configuração" component={Configuration}/>
-                <Stack.Screen name="Agentar entrega" component={ScheduleDelivery}/>
-                <Stack.Screen name="Histórico" component={HistoricalUser}/>
-                <Stack.Screen name="Histórico Coletor" component={HistoricalCollector}/>
-                <Stack.Screen name="Comprovante de retirada" component={Proof}/>
-                <Stack.Screen name="Entrega" component={Delivery}/>
+                <Stack.Screen name="Histórico de Entregas" component={HistoricalUser}/>
+                <Stack.Screen name="Histórico de Coletas" component={HistoricalCollector}/>
+                <Stack.Screen name="Comprovante de Entrega" component={Proof}/>
+                <Stack.Screen name="Confirmar Entrega" component={ConfirmDelivery}/>
                 <Stack.Screen name="Home Coletor" component={MainScreenCollector}/>
-                <Stack.Screen name="Home" component={BottomNav} options={{ headerShown: false}} />
+                <Stack.Screen name="HomeUser" component={BottomNavUser} options={{ headerShown: false}} />
+                <Stack.Screen name="HomeCollector" component={BottomNavCollector} options={{ headerShown: false}} />
+                <Stack.Screen name="Detalhes de Coletar" component={DetailsDelivery} />
             </Stack.Navigator>
         </NavigationContainer>
     )

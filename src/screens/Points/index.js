@@ -2,10 +2,24 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Styles from './style';
 import Icon from "react-native-vector-icons/FontAwesome"
+import { onAuthStateChanged } from 'firebase/auth';
+import firebase from '../../recursos/firebase';
 
-export default function Points ()  {
+export default function Points ({route})  {
   const [pontos, setPontos] = React.useState(0)
   const [quantidade, setQuantidade] = React.useState(0)
+  const [uid, setUid] = React.useState('')
+  const [dados, setDados] = React.useState([])
+
+  const auth = firebase.auth
+
+  React.useEffect(() => {   
+    setUid(route.params.uid)
+    setDados(route.params.dados)
+    if(dados != null){
+        setPontos(dados.pontos)
+    }
+}, [uid]); 
 
   return (
 

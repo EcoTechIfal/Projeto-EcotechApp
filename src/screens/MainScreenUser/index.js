@@ -3,24 +3,24 @@ import React from "react";
 import { View, Text } from "react-native";
 import firebase from "../../recursos/firebase";
 import Icon from "react-native-vector-icons/FontAwesome"
+import crud from "../../recursos/crud";
+import { buscarDados } from "../../funciotons/buscarDados";
 
 export default function MainScreenUser({route}){
+    const auth = firebase.auth
     const [pontos, setPontos] = React.useState(0)
     const [nome, setNome] = React.useState("semNome")
+    const [uid, setUid] = React.useState("")
+
+    const [dados, setDados] = React.useState([])
+    //modais
     const [papel, setPapel] = React.useState(false)
     const [vidro, setVidro] = React.useState(false)
     const [plastico, setPlastico] = React.useState(false)
     const [outros, setOutros] = React.useState(false)
-    const auth = firebase.auth
-    const [uid, setUid] = React.useState("")
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            setUid(user.uid)
-            console.log(uid)
-        }
-    },[])
 
+    
     function modalP(){
         setPapel(!papel)
     }
@@ -34,12 +34,21 @@ export default function MainScreenUser({route}){
         setOutros(!outros)
     }
 
+    React.useEffect(() => {   
+        setUid(route.params.uid)
+        setDados(route.params.dados)
+        if(dados != null){
+            setNome(dados.nomeUser)
+            setPontos(dados.pontos)
+        }
+    }, [uid]); 
+    
     return(
         <View>
-            <Text>Olá, {nome}, uid {uid && uid}</Text>
+            <Text>Olá {nome}, uid {uid && uid}</Text>
             <View>
                 <Text>Pontos</Text>
-                <View>
+                <View style={{flexDirection: "row"}}>
                     <Icon name="trophy" size={30} color="black"/>
                     <Text>{pontos}</Text>
                 </View>

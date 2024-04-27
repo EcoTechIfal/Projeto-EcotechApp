@@ -1,30 +1,58 @@
-
 import React from "react";
 import { View, Text, Button, TouchableOpacity, KeyboardAvoidingView,TextInput } from "react-native";
 import Styles from "./style";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import firebase from "../../recursos/firebase";
+import { buscarDados } from "../../funciotons/buscarDados";
 
-export default function LoginUser({navigation}){
+export default function LoginUser({navigation, route}){
     const [email, setEmail] = React.useState("")
     const [senha, setSenha] = React.useState("")
+    const [uid, setUid] = React.useState('')
+    const [dados, setDados] = React.useState([])
+
     const auth = firebase.auth
+
+    React.useEffect(()=>{
+        if(route.params){
+            setEmail(route.params.email)
+        }
+    }, [])
 
     function Login(email, senha){
         signInWithEmailAndPassword(auth, email,senha)
         .then((userCredential) => {
-            console.log('Login sucesso!');
-            navigation.replace("Home")
+            const user = userCredential.user
+            const uid = user.uid
+            setUid(uid)
+            console.log('Login sucesso!', uid);
         })
         .catch(error => {
           alert("Email ou senha inválidos")
       });
-      
       }
-      React.useEffect(()=>{
-        setEmail("ecotechifal@gmail.com")
-        setSenha("meioambiente")
-      })
+
+      React.useEffect(() => {   
+        async function busca() {
+            const data = await buscarDados(uid);
+            if (data != null) {
+                setDados(data);
+                console.log(data.funcao)
+            }
+        }
+        busca();
+    }, [uid]); 
+
+    React.useEffect(()=>{
+        if (dados.funcao) {
+            dados.funcao === "coletor" ?
+                navigation.replace("HomeCollector", {uid: uid, dados: dados})
+            :
+                navigation.replace("HomeUser", {uid: uid, dados: dados})
+            
+        }
+    },[dados])
+
     return(
         <KeyboardAvoidingView>
             

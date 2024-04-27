@@ -1,12 +1,19 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
-import { View, Text, TouchableOpacity, } from 'react-native';
+import {Image, View, Text, TouchableOpacity, } from 'react-native';
 import firebase from '../../recursos/firebase';
 import Icon from "react-native-vector-icons/FontAwesome"
 import styles from './style';
+import { buscarDadosEntregas } from '../../funciotons/burcarDadosEntregas';
+import { buscarDadosEntregasUsuarios } from '../../funciotons/buscarDadosEntregasUsuario';
 
-export default function Configuration({navigation}){
+export default function Configuration({navigation, route}){
     const [nome, setNome] = React.useState("Sem nome")
+    const [uid, setUid] = React.useState("")
+    const [dados, setDados] = React.useState([])
+    const [dadosColetas, setDadosColetas] = React.useState([])
+    const [image, setImage] = React.useState('')
+
     const auth = firebase.auth
     function LogOut(){
         signOut(auth)
@@ -17,14 +24,37 @@ export default function Configuration({navigation}){
             console.error(error)
         })
     }
+
+    React.useEffect(() => {   
+        setUid(route.params.uid)
+        setDados(route.params.dados)     
+            if (dados != null) {
+                setNome(dados.nomeUser);
+                setImage(dados.fotoUser)
+            }
+    }, [uid]); 
+    
+    React.useEffect(() => {   
+        let data = []
+        async function busca() {
+            dados.funcao === "coletor" ? data = await buscarDadosEntregas(uid) :  data = await buscarDadosEntregasUsuarios(uid) 
+            if (data != null) {
+                setDadosColetas(data);
+            }
+        }
+        busca();
+    }, [uid]); 
+
     return(
         <View style={styles.container}>
-            <View  style={styles.bloco}>
-                <Text>Image</Text>
+            <View style={[styles.bloco, {flexDirection:"row", alignItems: "center  "}]}>
+                <TouchableOpacity  style={{ borderRadius:100, width:150, height:150, backgroundColor:"black"}}>
+                    {image ? <Image style={{ borderRadius:100, width: "100%", height: "100%"}} source={{uri: `${image}?timestamp=${new Date().getTime()}`}} /> : <View></View>}
+                </TouchableOpacity>
                 <View>
                     <Text>{nome}</Text>
-                    <Text>Usuário</Text>
-                    <TouchableOpacity style={styles.bottom} onPress={()=> navigation.navigate("Perfil Usuário")}><Text>Editar perfil</Text></TouchableOpacity>
+                    {dados.funcao == "usuario" ? <Text>Usuário</Text> : <Text>Coletor</Text>}
+                    <TouchableOpacity style={styles.bottom} onPress={()=> navigation.navigate("Perfil Usuário", {dados: dados, uid: uid})}><Text>Editar perfil</Text></TouchableOpacity>
                 </View>
             </View>
 
@@ -33,11 +63,15 @@ export default function Configuration({navigation}){
                     <Icon name="users" size={30} color="black"/>
                     <Text>Convidar amigos</Text>
                 </View>
-                <View >
+                {dados.funcao === "usuario" ? <View >
                     <Icon name="history" size={30} color="black"/>
                     <Text>Histórico de entregas</Text>
-                    <Icon onPress={()=> navigation.navigate("Histórico")} name='angle-right' size={20} color="black"/>
-                </View>
+                    <Icon onPress={()=> navigation.navigate("Histórico de Entregas",  {dados: dados, uid: uid, dadosEntregas: dadosColetas})} name='angle-right' size={20} color="black"/>
+                </View> : <View >
+                    <Icon name="history" size={30} color="black"/>
+                    <Text>Histórico de coletas</Text>
+                    <Icon onPress={()=> navigation.navigate("Histórico de Coletas",  {dados: dados, uid: uid, dadosColetas: dadosColetas})} name='angle-right' size={20} color="black"/>
+                </View>}
             </View>
             <TouchableOpacity style={styles.sair} onPress={()=> LogOut()}><Icon name="sign-out" size={30} color="black"/><Text>Sair</Text></TouchableOpacity>
         </View>

@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet,} from 'react-native';
 
-export default function Sponsors() {
+export default function Sponsors({route}) {
+    const [uid, setUid] = useState('')
+
+    React.useEffect(()=>{
+        setUid(route.params.uid)
+    },[])
 
   return (
     <View>
@@ -10,18 +15,6 @@ export default function Sponsors() {
         <View>
             <Text>Image</Text>
             <Text>Mercado1</Text>
-        </View>
-        <View>
-            <Text>Image</Text>
-            <Text>Mercado2</Text>
-        </View>
-        <View>
-            <Text>Image</Text>
-            <Text>Mercado3</Text>
-        </View>
-        <View>
-            <Text>Image</Text>
-            <Text>Mercado4</Text>
         </View>
     </View>
   );
