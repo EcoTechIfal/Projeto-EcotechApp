@@ -38,7 +38,29 @@ const insert = async ({cpf, email, endereco, nome, celular, nomeUser, uid}) => {
           }
     
 
-const Select = async ({uid}) => {
+    const SelectPatro = async () => {
+        const qry = query(collection(firestore, "patrocinadores"))
+        let dados = []
+        
+        try {   
+            const querySnapshot = await getDocs(qry);
+            const dadosSelect = querySnapshot.docs.map((doc) => {
+                const data = doc.data();
+                const id = doc.id;
+                const {fotoPatro, nome} = data;
+                return {fotoPatro, nome, id };
+            });
+            dados = dadosSelect
+            console.log(dados)
+        } catch (error) {
+            console.error(error);
+        }
+        
+            console.log("dados selectPatro");
+            return dados;
+        };
+    
+    const Select = async ({uid}) => {
         const qry = query(collection(firestore, "usuarios"), where("userId", "==", uid))
         let dados = []
     
@@ -68,13 +90,12 @@ const Select = async ({uid}) => {
     
         try {
             const querySnapshot = await getDocs(qry);
-            const dadosSelect = querySnapshot.docs.map((doc) => {
+            querySnapshot.docs.map((doc) => {
                 const dataDelivery = doc.data();
                 const id = doc.id;
                 const  { usuario, data, endereco, horario, peso, descricao, status, tipo, userId } = dataDelivery;
-                return {  usuario, data, endereco, horario, peso, descricao, status, tipo, userId ,id };
+                dados.push({ usuario, data, endereco, horario, peso, descricao, status, tipo, userId, id })
             });
-            dados = dadosSelect
         } catch (error) {
             console.error(error);
         }
@@ -83,19 +104,18 @@ const Select = async ({uid}) => {
         return dados;
     };
 
-    const SelectDelivery = async ({uid}) => {
+    const SelectDelivery = async () => {
         const qry = query(collection(firestore, "entregas"))
         let dados = []
     
         try {
             const querySnapshot = await getDocs(qry);
-            const dadosSelect = querySnapshot.docs.map((doc) => {
+            querySnapshot.docs.map((doc) => {
                 const dataDelivery = doc.data();
                 const id = doc.id;
                 const { usuario, data, endereco, horario, peso, descricao, status, tipo, userId } = dataDelivery;
                 dados.push({ usuario, data, endereco, horario, peso, descricao, status, tipo, userId, id })
             });
-            dadosSelect
         } catch (error) {
             console.error(error);
         }
@@ -151,4 +171,4 @@ const Select = async ({uid}) => {
     }
 
 
-export default {insert,insertEntregas, Select, SelectDelivery, SelectDeliveryUser, DeleteDelivery, DeleteDadosUser, UpdateDelivery, UpdateUser}
+export default {insert,insertEntregas,SelectPatro, Select, SelectDelivery, SelectDeliveryUser, DeleteDelivery, DeleteDadosUser, UpdateDelivery, UpdateUser}

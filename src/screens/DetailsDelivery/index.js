@@ -6,24 +6,24 @@ import crud from "../../recursos/crud";
 
 export default function DetailsDelivery({navigation, route}){
 
-    const {peso, horario, data, descricao, tipo, endereco, id} = route.params.entrega
     const nome = route.params.nome
     const uid = route.params.uid
     const dados = route.params.dados
+    const entrega = route.params.entrega
     
     async function mudarStatus(){
         const pesoCompleto = peso + " Kg"
 
         const dataUp = {
-        usuario: nome,
-        data: data,
-        endereco: endereco,
-        horario: horario,
-        peso: pesoCompleto,
-        descricao: descricao,
+        usuario: entrega.nome,
+        data: entrega.data,
+        endereco: entrega.endereco,
+        horario: entrega.horario,
+        peso: entrega.peso,
+        descricao: entrega.descricao,
         status: 1,
-        tipo: tipo,
-        userId: uid
+        tipo: entrega.tipo,
+        userId: entrega.userId
     }
 
         await crud.UpdateDelivery({idDoc: id, dataUp: dataUp})

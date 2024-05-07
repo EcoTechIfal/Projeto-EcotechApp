@@ -1,21 +1,30 @@
-import { FlatList, View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome"
+import Styles from "./style";
+import { FlatList } from "react-native";
 
+export default function HistoricalCollector({navigation, route}){
+    const [pontos, setPontos] = React.useState(0)
+    const [uid, setUid] = React.useState('')
+    const [dados, setDados] = React.useState('')
+    const [dadosEntrega, setDadosEntregas] = React.useState([])
+    const [nome, setNome] = React.useState('')
 
-export default function HistoricalUser({navigation, route}){
-
-    const dados = route.params.dados
-    const uid = route.params.uid
-    const dadosColetas = route.params.dadosColetas
+    React.useEffect(() => {
+        setUid(route.params.uid)
+        setDados(route.params.dados)
+        setDadosEntregas(route.params.dadosEntregas)
+    },[])   
 
     return(
-        <View>
-            <Text>Olá, {dados.nomeUser}</Text>
-            <Text>Histórico</Text>
+        <View style={Styles.container}>
+
+        <Text style={Styles.hello}>Olá, usuário</Text>
+        <Text style={Styles.historic}>Histórico</Text>
         
-            <FlatList
-        data={dadosColetas}
+        <FlatList
+        data={dadosEntrega}
         renderItem={({item}) =>{
           return(  
             <View>
@@ -32,15 +41,16 @@ export default function HistoricalUser({navigation, route}){
                         <Text style={Styles.ifal}>IFAL</Text>
                     </View>
 
-                {item.status == 0 ? <Text style={[Styles.status, {backgroundColor: "red"}]} >Aguardando Entrega</Text> : <Text style={[Styles.status, {backgroundColor: "#B0E9C1"}]}>Entrega Completa</Text>}
+                {item.status == 0 ? <Text style={[Styles.status, {backgroundColor: "red"}]} >Aguardando resposta</Text> : <Text style={[Styles.status, {backgroundColor: "#B0E9C1"}]}>Coletado</Text>}
+
                 <View style={Styles.bottom}>
-                    <TouchableOpacity onPress={()=> navigation.navigate("Detalhes de Coletar", {entrega: item, nome: dados.nome, uid: uid, dados: dados} )} style={Styles.touch}>
+                    <TouchableOpacity onPress={()=> navigation.navigate("Comprovante de Entrega", {entrega: item, uid: uid, dados: dados} )} style={Styles.touch}>
                         <Text style={Styles.view}>Visualizar</Text>
                     </TouchableOpacity>
 
                     <View style={Styles.points}>
                         <Icon name="trophy" size={30} color="black"/>
-                        <Text>{pontos}</Text>
+                        <Text>pontos</Text>
                     </View>
                 </View>
                 </View>
@@ -50,7 +60,6 @@ export default function HistoricalUser({navigation, route}){
           )  
         }}
         KeyExtractor={(item)=> item.id}/>    
-                
         </View>
     )
 }

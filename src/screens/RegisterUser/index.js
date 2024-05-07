@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Picker, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
+import { View, Text, TextInput, Picker, KeyboardAvoidingView, TouchableOpacity, Image } from 'react-native';
 import Styles from "./style"
 import firebase from '../../recursos/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import crud from '../../recursos/crud';
 import { buscarDados } from '../../funciotons/buscarDados';
+import styles from '../RegisterUser/style';
+import { ScrollView } from 'react-native-gesture-handler';
 
-export default function RegisterUser({navigation}){
+export default function RegisterUser({ navigation }) {
 
     const [nome, setNome] = useState('');
     const [nomeUser, setNomeUser] = useState('');
@@ -15,116 +17,137 @@ export default function RegisterUser({navigation}){
     const [senha, setSenha] = useState('');
     const [endereco, setEndereco] = useState('');
     const [cpf, setCpf] = useState('');
-    
+
     const auth = firebase.auth;
 
-    function Register(){
+    function Register() {
         createUserWithEmailAndPassword(auth, email, senha)
-        .then((userCredential) => {
-        const user = userCredential.user;
-        const uid = user.uid
-        console.log('Usuário criado com sucesso!');
-        Inserir(uid)
-        })
-        .catch(error => {
-          if (error.code === 'auth/email-already-in-use') {
-            console.log('Esse email já está sendo usado!');
-          }
-      
-          if (error.code === 'auth/invalid-email') {
-            console.log('Esse email não é valido!');
-          }
-          console.error(error);
-        });
+            .then((userCredential) => {
+                const user = userCredential.user;
+                const uid = user.uid
+                console.log('Usuário criado com sucesso!');
+                Inserir(uid)
+            })
+            .catch(error => {
+                if (error.code === 'auth/email-already-in-use') {
+                    console.log('Esse email já está sendo usado!');
+                }
+
+                if (error.code === 'auth/invalid-email') {
+                    console.log('Esse email não é valido!');
+                }
+                console.error(error);
+            });
     }
 
-    function Inserir(uid){
-       crud.insert({cpf, email, endereco, nome, celular, nomeUser, uid})
+    function Inserir(uid) {
+        crud.insert({ cpf, email, endereco, nome, celular, nomeUser, uid })
         alert(`Usuário ${nome} cadastrado, agora faça login`)
-        navigation.replace("Login Usuário", {email: email, senha: senha})
+        navigation.replace("Login Usuário", { email: email, senha: senha })
     }
-  
-    React.useEffect(()=>{
-        setNome("Dev o melhor que ta tendo")
-        setNomeUser("Dev")
-        setCelular("não tenho")
-        setEmail("dev@gmail.com")
-        setSenha(123456)
-        setCpf("não posso dizer")
-        setEndereco("Web")
-    },[])
-    
+
+    // vagabundo preguiçoso 
+    // React.useEffect(()=>{
+    //     setNome("Dev o melhor que ta tendo") 
+    //     setNomeUser("Dev")
+    //     setCelular("não tenho")
+    //     setEmail("dev@gmail.com")
+    //     setSenha(123456)
+    //     setCpf("não posso dizer")
+    //     setEndereco("Web")
+    // },[])
+
     return (
-        
-        <KeyboardAvoidingView>
-            <View>
+
+        <ScrollView>
+            <KeyboardAvoidingView style={styles.container}>
                 <View>
-                    <Text>Nome:</Text>
-                    <TextInput placeholder="Digite o nome completo"
-                    style={Styles.form}
-                    onChangeText={setNome}
-                    value={nome}
-                    />
+
+                    <View style={styles.imgContainer}>
+
+                        <Image
+                            style={styles.imgLogo}
+                            source={require('../../../assets/fundo.png')}
+                            alt="Logo_icon"
+                        />
+                        <Text style={styles.title}>Faça seu cadastro</Text>
+                        <Text style={styles.subtitle}>Faça seu cadastro para poder acessar o app</Text>
+                    </View>
+
+                    <View style={styles.inputContainer}>
+                        <Text style={styles.inputLabel}>Nome</Text>
+                        <TextInput
+                            placeholder="Digite o nome completo"
+                            style={styles.input}
+                            onChangeText={setNome}
+                            value={nome}
+                        />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <Text style={styles.inputLabel}>Nome de Usuário</Text>
+                        <TextInput
+                            placeholder="Digite o nome de usuário"
+                            style={styles.input}
+                            onChangeText={setNomeUser}
+                            value={nomeUser}
+                        />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <Text style={styles.inputLabel}>Celular</Text>
+                        <TextInput
+                            placeholder="Digite o número de celular"
+                            style={styles.input}
+                            onChangeText={setCelular}
+                            value={celular}
+                            keyboardType="numeric"
+                        />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <Text style={styles.inputLabel}>Email</Text>
+                        <TextInput
+                            placeholder="Digite o email"
+                            style={styles.input}
+                            onChangeText={setEmail}
+                            value={email}
+                        />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <Text style={styles.inputLabel}>Senha</Text>
+                        <TextInput
+                            placeholder="Digite a senha"
+                            style={styles.input}
+                            onChangeText={setSenha}
+                            value={senha}
+                            secureTextEntry={true}
+                        />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <Text style={styles.inputLabel}>Endereço</Text>
+                        <TextInput
+                            placeholder="Digite o endereço"
+                            style={styles.input}
+                            onChangeText={setEndereco}
+                            value={endereco}
+                        />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <Text style={styles.inputLabel}>CPF</Text>
+                        <TextInput
+                            placeholder="Digite o CPF"
+                            style={styles.input}
+                            onChangeText={setCpf}
+                            value={cpf}
+                            keyboardType="numeric"
+                        />
+                    </View>
+                    <TouchableOpacity onPress={cpf === "" || email === "" || endereco === "" || senha === "" || celular === "" || nome === "" ? Inserir : Register}>
+                        <View style={styles.btn}>
+                            <Text style={styles.btnText}>Concluir cadastro</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
-                <View>
-                    <Text>Nome de Usuário:</Text>
-                    <TextInput placeholder="Digite o nome completo"
-                    style={Styles.form}
-                    onChangeText={setNomeUser}
-                    value={nomeUser}
-                    />
-                </View>
-                <View>
-                    <Text>celular:</Text>
-                    <TextInput placeholder="Digite o Numero de celular"
-                    style={Styles.form}
-                    onChangeText={setCelular}
-                    value={celular}
-                    keyboardType="numeric"
-                    />
-                </View>
-                <View>
-                    <Text> email:</Text>
-                    <TextInput placeholder="Digite o email"
-                    style={Styles.form}
-                    onChangeText={setEmail}
-                    value={email}
-                    />
-                </View>
-                <View>
-                    <Text>senha:</Text>
-                    <TextInput placeholder="Digite a senha"
-                    style={Styles.form}
-                    onChangeText={setSenha}
-                    value={senha}
-                    secureTextEntry={true}
-                    /> 
-                </View>
-                <View>
-                    <Text>endereco:</Text>
-                    <TextInput placeholder=" Digite o Endereço"
-                    style={Styles.form}
-                    onChangeText={setEndereco}
-                    value={endereco}
-                    />
-                </View>
-                <View>
-                    <Text>cpf:</Text>
-                    <TextInput placeholder="Digite cpf"
-                    style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }}
-                    onChangeText={setCpf}
-                    value={cpf}
-                    />
-                </View>
-                {(cpf == "" || email == "" || endereco == "" || senha == "" || celular == "" || nome == "") ? 
-                (<TouchableOpacity onPress={()=> Inserir()}>
-                    <Text>Concluir cadastro</Text>
-                </TouchableOpacity>) :
-                (<TouchableOpacity onPress={()=> Register()}>
-                    <Text>Concluir cadastro</Text>
-                </TouchableOpacity>)
-            }
-            </View>
-        </KeyboardAvoidingView>
+            </KeyboardAvoidingView>
+        </ScrollView>
+
     );
 }

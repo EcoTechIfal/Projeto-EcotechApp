@@ -9,7 +9,6 @@ export default function Profile({ navigation, route }) {
   const [nomeUser, setNomeUser] = React.useState("semNome");
   const [cpf, setCpf] = React.useState("semNome");
   const [email, setEmail] = React.useState("semNome");
-  const [senha, setSenha] = React.useState("semNome");
   const [endereco, setEndereco] = React.useState("semNome");
   const [celular, setCelular] = React.useState("semNome");
   const [dados, setDados] = React.useState([])
@@ -27,7 +26,6 @@ export default function Profile({ navigation, route }) {
         setNomeUser(dados.nomeUser)
         setCpf(dados.cpf)
         setEmail(dados.email)
-        setSenha(dados.senha)
         setEndereco(dados.endereco)
         setCelular(dados.numero)
         setImage(dados.fotoUser)

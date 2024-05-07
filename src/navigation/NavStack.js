@@ -27,7 +27,7 @@ export default function NavStack(){
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Tela de escolha">
                 <Stack.Screen name="Tela de escolha" options={{ headerShown: false}} component={InitialScreen}/>
-                <Stack.Screen name="Login Usuário" component={LoginUser}/>
+                <Stack.Screen name="Login Usuário" component={LoginUser} options={{ headerShown: false}}/>
                 <Stack.Screen name="Cadastro Usuário" component={RegisterUser}/>
                 <Stack.Screen name="Recuperar Senha" component={RecoverPassword}/>
                 <Stack.Screen name="Login Coletor" component={LoginCollector}/>

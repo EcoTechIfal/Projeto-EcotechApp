@@ -1,7 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome"
-import { buscarDadosEntregas } from "../../funciotons/burcarDadosEntregas";
 import Styles from "./style";
 import { FlatList } from "react-native";
 
@@ -22,7 +21,7 @@ export default function HistoricalCollector({navigation, route}){
     return(
         <View style={Styles.container}>
 
-        <Text style={Styles.hello}>Olá,Coletor</Text>
+        <Text style={Styles.hello}>Olá, {dados.funcao}</Text>
         <Text style={Styles.historic}>Histórico</Text>
         
         <FlatList
@@ -52,7 +51,7 @@ export default function HistoricalCollector({navigation, route}){
 
                     <View style={Styles.points}>
                         <Icon name="trophy" size={30} color="black"/>
-                        <Text>{pontos}</Text>
+                        <Text>pontos</Text>
                     </View>
                 </View>
                 </View>
