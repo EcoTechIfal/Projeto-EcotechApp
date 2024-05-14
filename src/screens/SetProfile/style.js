@@ -5,6 +5,7 @@ const Styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       paddingHorizontal: 20,
+      
     },
     informacao: {
       fontWeight: 'bold',
@@ -26,13 +27,16 @@ const Styles = StyleSheet.create({
       padding: 10,
       borderRadius: 8,
     },
-    bottom: {
-      backgroundColor: 'green',
-      padding: 20,
-      borderRadius: 13,
-      alignItems: 'center',
-      fontWeight: 'bold',
-      marginHorizontal: 50,
+    button: {
+      backgroundColor: '#B0E9C1',
+      padding: 14,
+      marginBottom: 12,
+      borderRadius: 11,
+      marginRight: 40,
+      marginLeft: 40
+  },
+    textButton: {
+       textAlign: "center"
     },
      Camera: {
        position: 'absolute',

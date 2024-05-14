@@ -139,8 +139,8 @@ const uploadImagem = async (uri) =>{
                 />
             </View>
             </ScrollView>
-            <TouchableOpacity  style={Styles.bottom} >
-                <Text onPress={()=> ver()}>Salvar</Text>
+            <TouchableOpacity  style={Styles.button} >
+                <Text  style={Styles.textButton}  onPress={()=> ver()}>Salvar</Text>
             </TouchableOpacity>
         </KeyboardAvoidingView>
   );

@@ -14,11 +14,9 @@ const Styles = StyleSheet.create({
   },
   partup: {
     flexDirection: "row",
-    gap: "20%",
   },
   partdown: {
     flexDirection: "row",
-    gap: "20%",
   },
   type: {
     fontSize: 12,
@@ -40,9 +38,9 @@ const Styles = StyleSheet.create({
   },
   botton: {
     flexDirection: "row",
-    gap: 20,
     alignSelf: "center",
     bottom: "8%",
+    justifyContent: "space-between"
   },
   // titulo da coleta:
   title: {
@@ -59,7 +57,6 @@ const Styles = StyleSheet.create({
   // parte de baixo
 
   layer: {
-    gap: 15,
     marginLeft: "10%",
   },
   status: {
@@ -85,7 +82,6 @@ const Styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
-    gap: 5,
     fontStyle: "inter",
   },
 

@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
+import Icon from "react-native-vector-icons/FontAwesome"
 import { setUpTests } from "react-native-reanimated";
 
 export default function MainScreenCollector({navigation, route}){
@@ -19,22 +20,25 @@ export default function MainScreenCollector({navigation, route}){
             <View >
                 <TouchableOpacity>
                     <Text>Papel</Text>
-                    <Text>Icon</Text>
+                    <Icon onPress={()=> modalP()} name="chevron-down" size={30} color="black"/>
                 </TouchableOpacity>
             </View>
             <View >
                 <TouchableOpacity>
                     <Text>Vidro</Text>
+                    <Icon onPress={()=> modalP()} name="chevron-down" size={30} color="black"/>
                 </TouchableOpacity>
             </View>
             <View >
                 <TouchableOpacity>
                     <Text>Plástico</Text>
+                    <Icon onPress={()=> modalP()} name="chevron-down" size={30} color="black"/>
                 </TouchableOpacity>
             </View>
               <View >
                 <TouchableOpacity>
                     <Text>Outros</Text>
+                    <Icon onPress={()=> modalP()} name="chevron-down" size={30} color="black"/>
                 </TouchableOpacity>
             </View>
             <View >

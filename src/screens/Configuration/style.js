@@ -15,7 +15,7 @@ const Styles = StyleSheet.create({
       
     },
     bloco: {
-      backgroundColor: "green",
+      backgroundColor: "#B0E9C1",
       alignItems: "center",
       flexDirection:"row", 
       paddingVertical:15,

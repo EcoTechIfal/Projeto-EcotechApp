@@ -53,14 +53,14 @@ export default function LoginUser({ navigation, route }) {
 
         }
         setEmail("teushff@gmail.com")
-        setSenha(123456)
+        setSenha("123456")
     }, [dados])
 
     return (
         <KeyboardAvoidingView style={styles.containerGeral}>
             <Image
                         style={styles.imgLogo}
-                        source={require('../../../assets/fundo.png')}
+                        source={'https://firebasestorage.googleapis.com/v0/b/ecotech-f0213.appspot.com/o/logos%2Ffundo.png?alt=media&token=e3b48e45-70f2-4755-bbc9-9045275c812c'}
                         alt="Logo_icon"
                     />
             <View style={styles.container}>

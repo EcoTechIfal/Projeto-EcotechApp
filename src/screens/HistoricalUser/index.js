@@ -8,7 +8,7 @@ export default function HistoricalCollector({navigation, route}){
     const [pontos, setPontos] = React.useState(0)
     const [uid, setUid] = React.useState('')
     const [dados, setDados] = React.useState('')
-    const [dadosEntrega, setDadosEntregas] = React.useState([])
+    const [dadosEntregas, setDadosEntregas] = React.useState([])
     const [nome, setNome] = React.useState('')
 
     React.useEffect(() => {
@@ -16,7 +16,7 @@ export default function HistoricalCollector({navigation, route}){
         setDados(route.params.dados)
         setDadosEntregas(route.params.dadosEntregas)
     },[])   
-
+    console.log(dadosEntregas)
     return(
         <View style={Styles.container}>
 
@@ -24,7 +24,7 @@ export default function HistoricalCollector({navigation, route}){
         <Text style={Styles.historic}>Histórico</Text>
         
         <FlatList
-        data={dadosEntrega}
+        data={dadosEntregas}
         renderItem={({item}) =>{
           return(  
             <View>
@@ -44,7 +44,7 @@ export default function HistoricalCollector({navigation, route}){
                 {item.status == 0 ? <Text style={[Styles.status, {backgroundColor: "red"}]} >Aguardando resposta</Text> : <Text style={[Styles.status, {backgroundColor: "#B0E9C1"}]}>Coletado</Text>}
 
                 <View style={Styles.bottom}>
-                    <TouchableOpacity onPress={()=> navigation.navigate("Comprovante de Entrega", {entrega: item, uid: uid, dados: dados} )} style={Styles.touch}>
+                    <TouchableOpacity onPress={()=> navigation.navigate("Comprovante de Entrega", {entrega: item, uid: uid, nome: dados.nome} )} style={Styles.touch}>
                         <Text style={Styles.view}>Visualizar</Text>
                     </TouchableOpacity>
 

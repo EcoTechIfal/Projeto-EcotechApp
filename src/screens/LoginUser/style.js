@@ -9,8 +9,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   imgLogo: {
-    flex:1,
+   
     width: "100%",
+  },
+  containerGeral:{
+    alignItems: "center"
   },
   title: {
     fontSize: 27,
