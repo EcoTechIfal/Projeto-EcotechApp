@@ -31,18 +31,17 @@ export default function NavStack(){
                 <Stack.Screen name="Cadastro Usuário" component={RegisterUser}/>
                 <Stack.Screen name="Recuperar Senha" component={RecoverPassword}/>
                 <Stack.Screen name="Login Coletor" component={LoginCollector}/>
-                <Stack.Screen name="Patrocinadores" component={Sponsors}/>
-                <Stack.Screen name="Perfil Usuário" component={Profile}/>
-                <Stack.Screen name="Editar Perfil" component={SetProfile}/>
-                <Stack.Screen name="Configuração" component={Configuration}/>
-                <Stack.Screen name="Histórico de Entregas" component={HistoricalUser}/>
-                <Stack.Screen name="Histórico de Coletas" component={HistoricalCollector}/>
-                <Stack.Screen name="Comprovante de Entrega" component={Proof}/>
-                <Stack.Screen name="Confirmar Entrega" component={ConfirmDelivery}/>
-                <Stack.Screen name="Home Coletor" component={MainScreenCollector}/>
-                <Stack.Screen name="HomeUser" component={BottomNavUser} options={{ headerShown: false}} />
+                <Stack.Screen name="Patrocinadores" component={Sponsors} options={{headerStyle: {backgroundColor: "#B0E9C1"}}}/>
+                <Stack.Screen name="Perfil Usuário" component={Profile} options={{headerStyle: {backgroundColor: "#B0E9C1"}}}/>
+                <Stack.Screen name="Editar Perfil" component={SetProfile} options={{headerStyle: {backgroundColor: "#B0E9C1"}}}/>
+                <Stack.Screen name="Configuração" component={Configuration} options={{headerStyle: {backgroundColor: "#B0E9C1"}}}/>
+                <Stack.Screen name="Histórico de Entregas" component={HistoricalUser} options={{headerStyle: {backgroundColor: "#B0E9C1"}}}/>
+                <Stack.Screen name="Histórico de Coletas" component={HistoricalCollector} options={{headerStyle: {backgroundColor: "#B0E9C1"}}}/>
+                <Stack.Screen name="Comprovante de Entrega" component={Proof} options={{headerStyle: {backgroundColor: "#B0E9C1"}}}/>
+                <Stack.Screen name="Confirmar Entrega" component={ConfirmDelivery} options={{headerStyle: {backgroundColor: "#B0E9C1"}}}/>
+                <Stack.Screen name="HomeUser" component={BottomNavUser} options={{ headerShown: false }} />
                 <Stack.Screen name="HomeCollector" component={BottomNavCollector} options={{ headerShown: false}} />
-                <Stack.Screen name="Detalhes de Coletar" component={DetailsDelivery} />
+                <Stack.Screen name="Detalhes de Coletar" component={DetailsDelivery} options={{headerStyle: {backgroundColor: "#B0E9C1"}}}/>
             </Stack.Navigator>
         </NavigationContainer>
     )

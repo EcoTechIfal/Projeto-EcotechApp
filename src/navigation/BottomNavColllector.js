@@ -13,9 +13,10 @@ export default function BottomNavCollector({navigation, route}){
   const uid = route.params.uid
   const dados = route.params.dados
   return (
-      <Tab.Navigator>
+    <Tab.Navigator  tabBarOptions={{activeTintColor: "black"}}     
+    screenOptions={{tabBarStyle: { backgroundColor: '#B0E9C1' }}}>
         <Tab.Screen initialParams={{uid: uid, dados: dados}} name="Home" component={MainScreenCollector} 
-        options={{tabBarIcon: ()=>{<Icon name="home" size={30} color="black"/>} 
+        options={{headerStyle: {backgroundColor: "#B0E9C1"}, tabBarIcon: ()=>{<Icon name="home" size={30} color="black"/>} 
         ,headerRight: () => (<View style={{flexDirection: "row"}}>
         <Icon style={{margin: 10}} onPress={()=> navigation.navigate("Patrocinadores", {uid: uid, dados: dados})} name="group" size={30} color="black"/> 
         <Icon style={{margin: 10}} onPress={()=> navigation.navigate("Configuração",{uid: uid, dados: dados})} name="cog" size={30} color="black"/>
