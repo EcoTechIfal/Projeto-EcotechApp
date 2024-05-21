@@ -35,12 +35,9 @@ export default function Profile({ navigation, route }) {
   return (
     <View style={styles.bloco}>
         <View style={styles.InfoPerfil}>
-            <View>
                 <View style={{ borderRadius:100, width:200, height:200, backgroundColor:"black"}}>
                     {image ? <Image style={{ borderRadius:100, width: "100%", height: "100%"}} source={{uri: `${image}?timestamp=${new Date().getTime()}`}} /> : <View></View>}
                 </View>
-            </View>
-            <Text>{nomeUser}</Text>
         </View>
 
         <View style={styles.dataBloco}>

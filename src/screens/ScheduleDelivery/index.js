@@ -22,6 +22,9 @@ export default function ScheduleDelivery({navigation, route}) {
     setDados(route.params.dados)
   },[])
 
+  function ver(){
+    hora == "" || data == "" || tipo == "nulo" || descricao == "" || peso == "" ? alert("Preencha os dados") : navigation.navigate("Confirmar Entrega", {uid: uid, dados: dados, nome: nome, peso: peso, horario: hora, data: data, descricao: descricao, tipo: tipo})
+  }
   return (
     <View>
       <View>
@@ -43,7 +46,7 @@ export default function ScheduleDelivery({navigation, route}) {
             selectedValue={tipo}
             onValueChange={setTipo}
           >
-            <Picker.Item label="Selecione o tipo de material" value="" />
+            <Picker.Item label="Selecione o tipo de material" value="nulo" />
             <Picker.Item label="Plástico" value="Plástico" />
             <Picker.Item label="Metal" value="Metal" />
             <Picker.Item label="Vidro" value="Vidro" />
@@ -59,7 +62,7 @@ export default function ScheduleDelivery({navigation, route}) {
           <TextInput placeholder='ex: 12:00 às 13:00' onChangeText={setHora} value={hora}/>
         </View>
       </View>
-      <TouchableOpacity onPress={()=> navigation.navigate("Confirmar Entrega", {uid: uid, dados: dados, nome: nome, peso: peso, horario: hora, data: data, descricao: descricao, tipo: tipo})}><Text>Agendar</Text></TouchableOpacity>
+      <TouchableOpacity onPress={()=> ver()}><Text>Agendar</Text></TouchableOpacity>
     </View>
   );
 };

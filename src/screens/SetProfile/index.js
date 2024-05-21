@@ -92,7 +92,8 @@ const uploadImagem = async (uri) =>{
   }
 
   return (
-    <KeyboardAvoidingView style={Styles.container} behavior='padding'>
+    <KeyboardAvoidingView style={Styles.container} >
+            
             <View>
                  <View>
                     <TouchableOpacity  style={Styles.fotoPerfil}>
@@ -102,42 +103,42 @@ const uploadImagem = async (uri) =>{
                 </View>
             </View>
             <ScrollView>
-            <View style={Styles.informacao}>
-                <Text>Nome:</Text>
-                <TextInput style={Styles.dados} placeholder="Digite o Nome completo"
-                onChangeText={setNome}
-                value={nome}
-                />
-            </View>
-            <View style={Styles.informacao}>
-                <Text>Nome de Usuário:</Text>
-                <TextInput style={Styles.dados} placeholder="Digite o Nome de Usuário"
-                onChangeText={setNomeUser}
-                value={nomeUser}
-                />
-            </View>
-            <View style={Styles.informacao}>
-                <Text>Celular:</Text>
-                <TextInput style={Styles.dados} placeholder="Digite o Numero de Celular" 
-                onChangeText={setCelular}
-                value={celular}
-                keyboardType="numeric"
-                />
-            </View>
-            <View style={Styles.informacao}>
-                <Text>Endereco:</Text>
-                <TextInput style={Styles.dados} placeholder=" Digite o Endereço"
-                onChangeText={setEndereco}
-                value={endereco}
-                />
-            </View>
-            <View style={Styles.informacao}>
-                <Text>Cpf:</Text>
-                <TextInput style={Styles.dados} placeholder="Digite Cpf"
-                onChangeText={setCpf}
-                value={cpf}
-                />
-            </View>
+                <View style={Styles.informacao}>
+                    <Text>Nome:</Text>
+                    <TextInput style={Styles.dados} placeholder="Digite o Nome completo"
+                    onChangeText={setNome}
+                    value={nome}
+                    />
+                </View>
+                <View style={Styles.informacao}>
+                    <Text>Nome de Usuário:</Text>
+                    <TextInput style={Styles.dados} placeholder="Digite o Nome de Usuário"
+                    onChangeText={setNomeUser}
+                    value={nomeUser}
+                    />
+                </View>
+                <View style={Styles.informacao}>
+                    <Text>Celular:</Text>
+                    <TextInput style={Styles.dados} placeholder="Digite o Numero de Celular" 
+                    onChangeText={setCelular}
+                    value={celular}
+                    keyboardType="numeric"
+                    />
+                </View>
+                <View style={Styles.informacao}>
+                    <Text>Endereco:</Text>
+                    <TextInput style={Styles.dados} placeholder=" Digite o Endereço"
+                    onChangeText={setEndereco}
+                    value={endereco}
+                    />
+                </View>
+                <View style={Styles.informacao}>
+                    <Text>Cpf:</Text>
+                    <TextInput style={Styles.dados} placeholder="Digite Cpf"
+                    onChangeText={setCpf}
+                    value={cpf}
+                    />
+                </View>
             </ScrollView>
             <TouchableOpacity  style={Styles.button} >
                 <Text  style={Styles.textButton}  onPress={()=> ver()}>Salvar</Text>

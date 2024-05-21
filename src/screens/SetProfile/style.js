@@ -3,9 +3,7 @@ import { StyleSheet } from "react-native";
 const Styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
       paddingHorizontal: 20,
-      
     },
     informacao: {
       fontWeight: 'bold',
@@ -17,7 +15,8 @@ const Styles = StyleSheet.create({
       height:150,
       backgroundColor:'black',
       justifyContent:'center',
-      alignSelf:'center'
+      alignSelf:'center',
+      margin: "8%"
      },
     dados: {
       fontWeight: 'bold',
@@ -30,18 +29,14 @@ const Styles = StyleSheet.create({
     button: {
       backgroundColor: '#B0E9C1',
       padding: 14,
-      marginBottom: 12,
-      borderRadius: 11,
-      marginRight: 40,
-      marginLeft: 40
+      margin:"12%",
+      borderRadius: 10,
   },
     textButton: {
        textAlign: "center"
     },
      Camera: {
        position: 'absolute',
-      bottom: 0,
-      right: 0,
      },
   });
 

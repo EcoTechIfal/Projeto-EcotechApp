@@ -52,8 +52,8 @@ export default function LoginUser({ navigation, route }) {
                 navigation.replace("HomeUser", { uid: uid, dados: dados })
 
         }
-        setEmail("teushff@gmail.com")
-        setSenha("123456")
+        setEmail("arthuralcantarab@gmail.com")
+        setSenha("")
     }, [dados])
 
     return (

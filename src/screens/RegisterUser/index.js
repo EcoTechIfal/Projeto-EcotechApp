@@ -46,6 +46,9 @@ export default function RegisterUser({ navigation }) {
         navigation.replace("Login Usuário", { email: email, senha: senha })
     }
 
+    function CompRegis(){
+        cpf === "" || email === "" || endereco === "" || senha === "" || celular === "" || nome === "" ? alert("preencha todos os dados") : Register()
+    }
     // vagabundo preguiçoso 
     // React.useEffect(()=>{
     //     setNome("Dev o melhor que ta tendo") 
@@ -58,9 +61,8 @@ export default function RegisterUser({ navigation }) {
     // },[])
 
     return (
-
+<KeyboardAvoidingView style={styles.container}>
         <ScrollView>
-            <KeyboardAvoidingView style={styles.container}>
                 <View>
 
                     <View style={styles.imgContainer}>
@@ -140,14 +142,14 @@ export default function RegisterUser({ navigation }) {
                             keyboardType="numeric"
                         />
                     </View>
-                    <TouchableOpacity onPress={cpf === "" || email === "" || endereco === "" || senha === "" || celular === "" || nome === "" ? Inserir : Register}>
+                    <TouchableOpacity onPress={()=> CompRegis()}>
                         <View style={styles.btn}>
                             <Text style={styles.btnText}>Concluir cadastro</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
-            </KeyboardAvoidingView>
+            
         </ScrollView>
-
+        </KeyboardAvoidingView>
     );
 }

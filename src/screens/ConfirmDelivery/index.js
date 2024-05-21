@@ -12,6 +12,9 @@ export default function ConfirmDelivery({navigation, route}){
     const uid = route.params.uid
     const dados = route.params.dados
 
+    function ver(){
+        endereco == "" ? alert("escolha o esdereco") : insertNewDel() 
+    }
     function insertNewDel(){
         crud.insertEntregas({endereco ,nome, data, horario, peso, descricao, tipo, uid})
         //({enderecoDeEntrega, nome, data, horario, peso, descricao,material, uid
@@ -34,7 +37,7 @@ export default function ConfirmDelivery({navigation, route}){
             selectedValue={endereco}
             onValueChange={setEndereco}
           >
-            <Picker.Item label="Selecione o local de sua entrega" value="" />
+            <Picker.Item label="Selecione o local de sua entrega" value="nulo" />
             <Picker.Item label="Ifal" value="Instituto Federal de Alagoas Campos SMC" />
             <Picker.Item label="Acamare" value="Acamare empresa de coleta de lixo" />
           </Picker>
@@ -59,8 +62,8 @@ export default function ConfirmDelivery({navigation, route}){
                 <Text>Hora para a entrega</Text>
                 <Text>{horario}</Text>
             </View>
-            <TouchableOpacity onPress={()=> navigation.replace("HomeUser", {uid: uid, dados: dados})}>
-                <Text onPress={()=> insertNewDel()}>Confirmar Entrega</Text>
+            <TouchableOpacity>
+                <Text onPress={()=> ver()}>Confirmar Entrega</Text>
             </TouchableOpacity>
         </View>
     )

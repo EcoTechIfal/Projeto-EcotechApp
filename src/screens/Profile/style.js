@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     bloco: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
   },
   InfoPerfil: {
     marginBottom: 20,
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#B0E9C1',
       padding: 14,
       marginBottom: 12,
-      borderRadius: 11,
+      borderRadius: 10,
   },
 });
 

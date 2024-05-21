@@ -109,3 +109,4 @@ registerContainer: {
   justifyContent: "center",
 }
 });
+export default Styles
