@@ -60,7 +60,7 @@ const uploadImagem = async (uri) =>{
         const blob = await resp.blob();
 
         await uploadBytes(lugarStorage, blob, { contentType: 'image/jpeg' })
-
+        
         const url = await getDownloadURL(lugarStorage)
         if(url){
             setImage(url)
@@ -72,6 +72,12 @@ const uploadImagem = async (uri) =>{
     }
 }
 
+    async function busca() {
+        const data = await buscarDados(uid); 
+        if (data != null) {
+        setDados(data);
+        }
+    }
   const EnvairUrl = async ()=>{
     const {email, pontos, funcao,  id} = dados
     console.log("a url da image que vai ser upada", image)
@@ -88,6 +94,7 @@ const uploadImagem = async (uri) =>{
         userId: uid
     }
     await crud.UpdateUser({idDoc: id, dataUp:Newdata})
+    await busca()
     navigation.navigate("HomeUser", {dados:dados, uid:uid})
   }
 

@@ -60,7 +60,7 @@ export default function LoginUser({ navigation, route }) {
         <KeyboardAvoidingView style={styles.containerGeral}>
             <Image
                         style={styles.imgLogo}
-                        source={'https://firebasestorage.googleapis.com/v0/b/ecotech-f0213.appspot.com/o/logos%2Ffundo.png?alt=media&token=e3b48e45-70f2-4755-bbc9-9045275c812c'}
+                        source={'https://firebasestorage.googleapis.com/v0/b/ecotechv-14b06.appspot.com/o/Logos%2Ffundo.png?alt=media&token=1359a54a-8a0c-46bd-baea-0704e8e92408'}
                         alt="Logo_icon"
                     />
             <View style={styles.container}>
