@@ -1,17 +1,13 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import Styles from './style';
+import { View, Text, TouchableOpacity } from 'react-native';
+import styles from './style'; // Importando o novo estilo
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { onAuthStateChanged } from 'firebase/auth';
-import firebase from '../../recursos/firebase';
 
 export default function Points({ route }) {
   const [pontos, setPontos] = React.useState(0);
   const [quantidade, setQuantidade] = React.useState(0);
   const [uid, setUid] = React.useState('');
   const [dados, setDados] = React.useState([]);
-
-  const auth = firebase.auth;
 
   React.useEffect(() => {
     setUid(route.params.uid);
@@ -22,36 +18,36 @@ export default function Points({ route }) {
   }, [uid]);
 
   return (
-    <View tyle={Styles.container}>
-      <View style={Styles.container2}>
-        <Text style={Styles.pontos}>Você tem {pontos} pontos</Text>
-        <Text style={Styles.text}>
+    <View style={styles.container}>
+      <View style={styles.container2}>
+        <Text style={styles.pontos}>Você tem {pontos} pontos</Text>
+        <Text style={styles.text}>
           Solicite a troca dos seus Pontos e ganhe benefícios e descontos
           exclusivos!
         </Text>
       </View>
 
-      <TouchableOpacity style={Styles.button} onPress={'Botao 1'}>
-        <Text style={Styles.buttonText}>Solicitar Comprovante</Text>
+      <TouchableOpacity style={styles.button} onPress={() => alert('Botao 1')}>
+        <Text style={styles.buttonText}>Solicitar Comprovante</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={Styles.button} onPress={'Botao 2'}>
-        <Text style={Styles.buttonText}>Como funcionam os pontos</Text>
+      <TouchableOpacity style={styles.button} onPress={() => alert('Botao 2')}>
+        <Text style={styles.buttonText}>Como funcionam os pontos</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={Styles.button} onPress={'Botao 3'}>
-        <Text style={Styles.buttonText}>Locais de Entrega</Text>
+      <TouchableOpacity style={styles.button} onPress={() => alert('Botao 3')}>
+        <Text style={styles.buttonText}>Locais de Entrega</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={Styles.button} onPress={'Botao 4'}>
-        <Text style={Styles.buttonText}>Convide Amigos</Text>
+      <TouchableOpacity style={styles.button} onPress={() => alert('Botao 4')}>
+        <Text style={styles.buttonText}>Convide Amigos</Text>
       </TouchableOpacity>
 
-      <View style={Styles.caixa}>
-        <Icon style={Styles.peso} name="star" size={40} color="black" />
+      <View style={styles.caixa}>
+        <Icon style={styles.peso} name="star" size={40} color="black" />
         <View>
-          <Text style={Styles.total}>Peso total</Text>
-          <Text style={Styles.atual}>
+          <Text style={styles.total}>Peso total</Text>
+          <Text style={styles.atual}>
             Até agora você atingiu {quantidade} Kg de resíduos
           </Text>
         </View>

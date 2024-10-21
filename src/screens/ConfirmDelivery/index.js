@@ -1,8 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome"
-
 import React from "react";
-import crud from "../../recursos/crud";
+import crud from "../../services/userService";
 import  {Picker} from '@react-native-picker/picker';
 
 export default function ConfirmDelivery({navigation, route}){

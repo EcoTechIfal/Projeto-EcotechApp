@@ -39,10 +39,10 @@ export default function HistoricalCollector({navigation, route}){
 
                     <View style={Styles.icons}>
                         <Icon name="map-pin" size={20} color="black"/>
-                        <Text style={Styles.ifal}>IFAL</Text>
+                        <Text style={Styles.ifal}>{item.endereco}</Text>
                     </View>
 
-                {item.status == 0 ? <Text style={[Styles.status, {backgroundColor: "red"}]} >Aguardando resposta</Text> : <Text style={[Styles.status, {backgroundColor: "#B0E9C1"}]}>Coletado</Text>}
+                {item.status == 0 ? <Text style={[Styles.status, {backgroundColor: "red"}]} >Aguardando resposta</Text> : <Text style={[Styles.status, {backgroundColor: "green"}]}>Coletado</Text>}
 
                 <View style={Styles.bottom}>
                     <TouchableOpacity onPress={()=> navigation.navigate("Detalhes de Coletar", {entrega: item, nome: nome, uid: uid, dados: dados} )} style={Styles.touch}>

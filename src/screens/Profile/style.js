@@ -1,38 +1,58 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    bloco: {
+  bloco: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
+    padding: 20,
+    backgroundColor: '#f0f4f8', // Cor de fundo suave
   },
   InfoPerfil: {
+    alignItems: 'center',
     marginBottom: 20,
   },
- dataBloco: {
-    width: '80%',
+  profileImageContainer: {
+    borderRadius: 100,
+    width: 200,
+    height: 200,
+    backgroundColor: "black",
+    overflow: 'hidden',
+  },
+  profileImage: {
+    borderRadius: 100,
+    width: "100%",
+    height: "100%",
+  },
+  placeholderImage: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#bdc3c7", // Cor para a imagem de espaço reservado
+  },
+  dataBloco: {
+    marginBottom: 20,
   },
   dados: {
-    flexDirection: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: 10,
-    marginBottom: 3,
-    borderColor: "red",
-    borderRadius: 15,
+    marginBottom: 10,
   },
   texto: {
     fontWeight: 'bold',
+    fontSize: 16,
   },
   valor: {
-    marginLeft: 10,
+    fontSize: 14,
+    color: '#34495e', 
   },
-
   button: {
-      backgroundColor: '#B0E9C1',
-      padding: 14,
-      marginBottom: 12,
-      borderRadius: 10,
+    backgroundColor: '#B0E9C1', 
+    borderRadius: 5,
+    alignItems: 'center',
+    padding: 15,
+    width: 140,
+    margin: 'auto',
+  },
+  buttonText: {
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
 
-export default styles
+export default styles;

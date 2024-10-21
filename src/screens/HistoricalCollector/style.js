@@ -1,74 +1,80 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const Styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  hello: {
-    textAlign: "center",
-    fontSize: 18,
-    fontWeight: "500",
-    color: "black",
-    marginTop: "10%",
-  },
-  historic: {
-    textAlign: "center",
-    fontSize: 16,
-    color: "black",
-    fontWeight: "500",
-    margin: "2%",
-  },
-  line: {
-    borderWidth: 1,
-    borderColor: "black",
-    maxWidth: "90%",
-    margin: "5%",
-  },
-  blockstatus: {
-    justifyContent: "space-between",
-    flexDirection: "row",
-    marginLeft: "8%",
-    marginRight: "8%",
-    marginBottom: "1.5%",
-  },
-  icons: {
-    flexDirection: "row",
-    marginLeft: "8%",
-    marginBottom: "0.5%",
-  },
-  status: {
-    backgroundColor: "#B0E9C1",
-    paddingLeft: 10,
-    paddingRight: 10,
-    borderRadius: 10,
-    marginLeft: "6%",
-    textAlign: "center",
-    alignSelf: "flex-start",
-  },
-  
-  bottom: {
-    alignSelf: "center",
-    flexDirection: "row",
-    alignItems: "center",
-    marginLeft:'12%',
-    marginTop:'2%',
- 
-  },
-  touch: {
-    backgroundColor: "#B0E9C1",
-    width:140,
-    height: 30,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 10,
-   
-  },
-  view: {
-    fontSize: 15,
-  },
-  points: {
-    flexDirection: "row",
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#FFFFFF',
+        padding: 20,
+    },
+    hello: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 20,
+    },
+    historic: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+    line: {
+        height: 1,
+        backgroundColor: 'black',
+        marginVertical: 10,
+    },
+    blockstatus: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 10,
+    },
+    date: {
+        fontSize: 16,
+        color: '#555555',
+    },
+    time: {
+        fontSize: 16,
+        color: '#555555',
+    },
+    icons: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginVertical: 5,
+    },
+    ifal: {
+        marginLeft: 5,
+        fontSize: 16,
+        color: '#333333',
+    },
+    status: {
+        padding: 3,
+        borderRadius: 5,
+        alignSelf: 'flex-start',
+        marginBottom: 10,
+        color: '#FFFFFF', 
+    },
+    bottom: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: 300,
+        margin: 'auto'
+    },
+    touch: {
+        backgroundColor: '#B0E9C1',
+        borderRadius: 5,
+        padding: 10,
+        alignItems: 'center',
+        flex: 1,
+        marginRight: 10, 
+    },
+    view: {
+      color: '#333333',
+        fontWeight: 'bold',
+    },
+    points: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
 });
 
 export default Styles;

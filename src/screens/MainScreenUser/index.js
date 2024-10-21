@@ -1,20 +1,16 @@
-import { onAuthStateChanged } from 'firebase/auth';
 import React from 'react';
 import { View, Text } from 'react-native';
-import firebase from '../../recursos/firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import crud from '../../recursos/crud';
-import { buscarDados } from '../../funciotons/buscarDados';
-import Styles from './style';
+import styles from './style'; // Importando o novo estilo
 
 export default function MainScreenUser({ route }) {
-  const auth = firebase.auth;
+  
   const [pontos, setPontos] = React.useState(0);
   const [nome, setNome] = React.useState('semNome');
   const [uid, setUid] = React.useState('');
 
   const [dados, setDados] = React.useState([]);
-  //modais
+  // modais
   const [papel, setPapel] = React.useState(false);
   const [vidro, setVidro] = React.useState(false);
   const [plastico, setPlastico] = React.useState(false);
@@ -43,65 +39,79 @@ export default function MainScreenUser({ route }) {
   }, [uid]);
 
   return (
-    <View style={Styles.container}>
-      <View style={Styles.abobora}>
-        <Text style={Styles.greeting}>
-          Olá {nome}, uid {uid && uid}
+    <View style={styles.container}>
+      <View style={styles.abobora}>
+        <Text style={styles.greeting}>
+          Olá {nome}
         </Text>
       </View>
-      <View style={Styles.lulu}>
-        <Text style={Styles.pontos}>Pontos</Text>
-        <View style={{ flexDirection: 'row' }}>
-          <Icon style={Styles.trofeu} name="trophy" size={30} color="black" />
-          <View style={Styles.jaca}>
-            <Text style={Styles.ponto2}>{pontos}</Text>
-          </View>
+      <View style={styles.lulu}>
+        <Text style={styles.pontos}>Pontos</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Icon style={styles.trofeu} name="trophy" size={30} color="black" />
+          <Text style={styles.ponto2}>{pontos}</Text>
         </View>
       </View>
-      <View style={Styles.container2}>
-        <View style={Styles.maça}>
-          <Text style={Styles.papel}>Papel</Text>
+      <View style={styles.container2}>
+        <View style={styles.maça}>
+          <View style={styles.mod}>
+          <Text style={styles.papel}>Papel</Text>
           <Icon
-            style={Styles.papel2}
+            style={styles.papel2}
             onPress={() => modalP()}
             name="chevron-down"
             size={25}
             color="black"
           />
-          {papel && <DadosPapel />}
+          </View>
+          <View>
+            {papel && <DadosPapel />}
+          </View>
         </View>
-        <View style={Styles.button}>
-          <Text style={Styles.vidro}>Vidro</Text>
-          <Icon
-            style={Styles.vidro2}
+        <View style={styles.button}>
+          <View style={styles.mod}>
+            <Text style={styles.vidro}>Vidro</Text>
+            <Icon
+            style={styles.vidro2}
             onPress={() => modalV()}
             name="chevron-down"
             size={25}
             color="black"
-          />
-          {vidro && <DadosVidro />}
+            />
+          </View>
+          <View>
+            {vidro && <DadosVidro />}
+          </View>
         </View>
-        <View style={Styles.mala}>
-          <Text style={Styles.platico}>Plástico</Text>
-          <Icon
-            style={Styles.platico2}
+        <View style={styles.mala}>
+          <View style={styles.mod}> 
+            <Text style={styles.platico}>Plástico</Text>
+            <Icon
+            style={styles.platico2}
             onPress={() => modalPlas()}
             name="chevron-down"
             size={25}
             color="black"
-          />
-          {plastico && <DadosPlastico />}
+            />
+          </View>
+          <View>
+            {plastico && <DadosPlastico />}
+          </View>
         </View>
-        <View style={Styles.tiro}>
-          <Text style={Styles.outros}>Outros</Text>
-          <Icon
-            style={Styles.outros2}
+        <View style={styles.tiro}>
+          <View style={styles.mod}>
+            <Text style={styles.outros}>Outros</Text>
+            <Icon
+            style={styles.outros2}
             onPress={() => modalO()}
             name="chevron-down"
             size={25}
             color="black"
-          />
+            />
+          </View>
+          <View >
           {outros && <DadosOutros />}
+          </View>
         </View>
       </View>
     </View>
@@ -109,14 +119,14 @@ export default function MainScreenUser({ route }) {
 }
 
 function DadosPapel() {
-  return <Text> O Papel é insanamente insano</Text>;
+  return <Text style={styles.textMod}>Meu nome é arthur, eu sou o desenvolvedor principal do app conhecido como Ecotech</Text>;
 }
 function DadosVidro() {
-  return <Text> O Vidro é insanamente insano</Text>;
+  return <Text style={styles.textMod}> O Vidro é insanamente insano</Text>;
 }
 function DadosPlastico() {
-  return <Text> O Plástico é insanamente insano</Text>;
+  return <Text style={styles.textMod}> O Plástico é insanamente insano</Text>;
 }
 function DadosOutros() {
-  return <Text> Os outros são insanamente insanos</Text>;
+  return <Text style={styles.textMod}> Os outros são insanamente insanos</Text>;
 }

@@ -1,8 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import LoginUser from "../screens/LoginUser"
-import LoginCollector from "../screens/LoginCollector"
+import Login from "../screens/Login"
 import RegisterUser from "../screens/RegisterUser"
 import RecoverPassword from "../screens/RecoverPassword"
 import InitialScreen from "../screens/InitialScreen"
@@ -15,7 +14,6 @@ import HistoricalCollector from "../screens/HistoricalCollector";
 import Proof from "../screens/Proof";
 import ConfirmDelivery from "../screens/ConfirmDelivery";
 import BottomNavUser from "./BottomNavUser";
-import MainScreenCollector from "../screens/MainScreenCollector";
 import BottomNavCollector from "./BottomNavColllector";
 import DetailsDelivery from "../screens/DetailsDelivery";
 
@@ -27,10 +25,9 @@ export default function NavStack(){
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Tela de escolha">
                 <Stack.Screen name="Tela de escolha" options={{ headerShown: false}} component={InitialScreen}/>
-                <Stack.Screen name="Login Usuário" component={LoginUser} options={{ headerShown: false}}/>
+                <Stack.Screen name="Login Usuário" component={Login} options={{ headerShown: false}}/>
                 <Stack.Screen name="Cadastro Usuário" component={RegisterUser}/>
                 <Stack.Screen name="Recuperar Senha" component={RecoverPassword}/>
-                <Stack.Screen name="Login Coletor" component={LoginCollector}/>
                 <Stack.Screen name="Patrocinadores" component={Sponsors} options={{headerStyle: {backgroundColor: "#B0E9C1"}}}/>
                 <Stack.Screen name="Perfil Usuário" component={Profile} options={{headerStyle: {backgroundColor: "#B0E9C1"}}}/>
                 <Stack.Screen name="Editar Perfil" component={SetProfile} options={{headerStyle: {backgroundColor: "#B0E9C1"}}}/>

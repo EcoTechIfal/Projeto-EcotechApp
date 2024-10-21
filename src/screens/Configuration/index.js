@@ -1,11 +1,11 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import {SafeAreaView, Image, View, Text, TouchableOpacity, Share} from 'react-native';
-import firebase from '../../recursos/firebase';
+import firebase from '../../database/firebase';
 import Icon from "react-native-vector-icons/FontAwesome"
 import styles from './style';
-import { buscarDadosEntregas } from '../../funciotons/burcarDadosEntregas';
-import { buscarDadosEntregasUsuarios } from '../../funciotons/buscarDadosEntregasUsuario';
+import { buscarDadosEntregas } from '../../services/burcarDadosEntregas';
+import { buscarDadosEntregasUsuarios } from '../../services/buscarDadosEntregasUsuario';
 
 export default function Configuration({navigation, route}){
     const [nome, setNome] = React.useState("Sem nome")
@@ -22,7 +22,6 @@ export default function Configuration({navigation, route}){
             alert("erro no compartilhar")
         }
     }
-
     const auth = firebase.auth
     
     function LogOut(){
@@ -74,21 +73,24 @@ export default function Configuration({navigation, route}){
                           <Icon style={styles.iconeContainer} name="users" size={30} color="black"/>
                           <Text onPress={()=> sharing()}>Convidar amigos</Text>
                       </View>
-                      {dados.funcao === "usuario" ? 
-                      <View style={styles.acao} >
-                          <Icon style={styles.iconeContainer} name="history" size={30} color="black"/>
-                          <Text>Histórico de entregas</Text>
-                          <Icon  onPress={()=> navigation.navigate("Histórico de Entregas",  {dados: dados, uid: uid, dadosEntregas: dadosColetas})} style={styles.iconeContainer} name='angle-right' size={20} color="black"/>
-                      </View> : 
-                      <View style={styles.acao}>
-                          <Icon style={styles.iconeContainer} name="history" size={30} color="black"/>
-                          <Text>Histórico de coletas</Text>
-                          <Icon  onPress={()=> navigation.navigate("Histórico de Coletas",  {dados: dados, uid: uid, dadosColetas: dadosColetas})}  style={styles.iconeContainer} name='angle-right' size={20} color="black"/>
-                      </View>}
+                      {dados.funcao === "coletor" ? 
+                    <View style={styles.acao}>
+                       <Icon style={styles.iconeContainer} name="history" size={30} color="black"/>
+                       <Text>Histórico de coletas                                 </Text>
+                       <Icon  onPress={()=> navigation.navigate("Histórico de Coletas",  {dados: dados, uid: uid, dadosColetas: dadosColetas})}  style={styles.iconeContainer} name='angle-right' size={30} color="black"/>
+                    </View>
+                   : 
+                    <View style={styles.acao} >
+                       <Icon style={styles.iconeContainer} name="history" size={30} color="black"/>
+                       <Text>Histórico de entregas                                </Text>
+                       <Icon  onPress={()=> navigation.navigate("Histórico de Entregas",  {dados: dados, uid: uid, dadosEntregas: dadosColetas})} style={styles.iconeContainer} name='angle-right' size={30} color="black"/>
+                   </View>
+                    }
                   </View>
-                  <TouchableOpacity style={styles.sair}>
-                   <Icon style={styles.iconeSair} name="sign-out" size={30} color="black" />
-          <Text onPress={()=> LogOut()} style={styles.textoSair}>Sair</Text></TouchableOpacity>
+                  <TouchableOpacity style={styles.sair} onPress={()=> LogOut()} >
+                    <Icon style={styles.iconeSair} name="sign-out" size={30} color="black" />
+                    <Text style={styles.textoSair}>Sair</Text>
+                  </TouchableOpacity>
               </View>
               </SafeAreaView>
           )

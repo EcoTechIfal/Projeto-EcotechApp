@@ -1,8 +1,6 @@
 import React from "react";
 import {Image, Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import styles from "./style";
-import Icon from "react-native-vector-icons/FontAwesome"
-import crud from "../../recursos/crud";
 
 export default function Profile({ navigation, route }) {
   const [nome, setNome] = React.useState("semNome");
@@ -35,7 +33,7 @@ export default function Profile({ navigation, route }) {
   return (
     <View style={styles.bloco}>
         <View style={styles.InfoPerfil}>
-                <View style={{ borderRadius:100, width:200, height:200, backgroundColor:"black"}}>
+                <View style={{ borderRadius:100, width:150, height:150, backgroundColor:"black"}}>
                     {image ? <Image style={{ borderRadius:100, width: "100%", height: "100%"}} source={{uri: `${image}?timestamp=${new Date().getTime()}`}} /> : <View></View>}
                 </View>
         </View>
@@ -75,7 +73,7 @@ export default function Profile({ navigation, route }) {
       </View>
 
       <TouchableOpacity style={styles.button}>
-        <Text onPress={() => navigation.navigate("Editar Perfil", {dados: dados, uid: uid})}>Modificar</Text>
+        <Text style={styles.buttonText} onPress={() => navigation.navigate("Editar Perfil", {dados: dados, uid: uid})}>Modificar</Text>
       </TouchableOpacity>
 
     </View>

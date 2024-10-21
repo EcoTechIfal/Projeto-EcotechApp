@@ -1,86 +1,56 @@
 import { StyleSheet } from 'react-native';
 
-const Styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: 20,
+    backgroundColor: '#f0f4f7', 
+    justifyContent: 'center', 
   },
   container2: {
-    justifyContent: 'center',
+    marginBottom: 30, 
     alignItems: 'center',
-    marginTop: 135,
   },
-
-  button: {
-    backgroundColor: '#B0E9C1',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 15,
-    marginVertical: 10,
-    gap: 10,
-    width: 340,
-    height: 40,
-    alignSelf: 'center',
-  },
-
-  buttonText: {
-    color: '#000',
-    fontSize: 16,
-    alignSelf: 'center',
-  },
-
-  logo: {
-    marginTop: 30,
-  },
-
   pontos: {
+    fontSize: 24,
     fontWeight: 'bold',
-    color: '#3E8914',
-    fontSize: 23,
-    margin: 10,
-    marginTop: 20,
+    marginBottom: 10, 
   },
-
   text: {
     fontSize: 16,
-    marginTop: -5,
-    marginBottom: 0,
     textAlign: 'center',
-    color: '#8C8F93',
   },
-
-  T: {
-    marginRight: 100,
-    marginLeft: 100,
+  button: {
+    backgroundColor: '#B0E9C1', 
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginBottom: 15,
   },
-
-  caixa: {
-    borderWidth: 3,
-    borderColor: '#98DF77',
-    marginTop: 20,
-    marginBottom: 90,
-    paddingBottom: -3,
-    paddingTop: 8,
-    paddingLeft: 10,
-    paddingRight: 10,
-    borderRadius: 20,
-    alignSelf: 'center',
-  },
-
-  total: {
+  buttonText: {
+    fontSize: 16,
     fontWeight: 'bold',
-    marginLeft: 80,
-    marginBottom: 40,
-    marginTop: -40,
-    fontSize: 19,
   },
-
+  caixa: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 20,
+    backgroundColor: '#ecf0f1',
+    borderRadius: 10,
+    marginTop: 30,
+  },
+  peso: {
+    marginRight: 20,
+  },
+  total: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#2c3e50',
+  },
   atual: {
-    marginLeft: 70,
-    marginBottom: 40,
-    marginTop: -30,
-    fontSize: 15,
+    fontSize: 14,
+    color: '#7f8c8d', 
   },
 });
-export default Styles;
+
+export default styles;

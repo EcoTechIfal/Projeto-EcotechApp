@@ -4,6 +4,7 @@ import Styles from './style';
 import { Share } from 'react-native';
 import * as Print from "expo-print"
 import * as shareing from "expo-sharing"
+import Icon from "react-native-vector-icons/FontAwesome"
 
 export default function Proof({navigation, route}){
     const [nome, setNome] = React.useState("Sem nome")
@@ -64,7 +65,7 @@ export default function Proof({navigation, route}){
     </html>
   `;
   const print = async () => {
-    // No iOS/Android imprime o HTML fornecido. Na web, imprime o HTML da página atual.
+    // No iOS/Android imprime o HTML,  Na web, imprime o HTML da página atual.
     try {
       const {uri} = await Print.printToFileAsync({
         html: htmlContent,
@@ -93,63 +94,57 @@ export default function Proof({navigation, route}){
   return (
     <View style={Styles.container}>
       <View>
-        <View style={Styles.title}>
-
-        </View>
-        <View style={Styles.main}>
-          <View style={Styles.partup}>
-            <View>
-              <Text style={Styles.type}>Tipo de Material:</Text>
+        
+       <View style={Styles.partup}>
+            <View style={Styles.text}>
+              <Text style={Styles.type}>Tipo de Material: </Text>
               <Text style={Styles.set}>{entrega.tipo}</Text>
             </View>
 
-            <View>
-              <Text style={Styles.types}>Quantidade:</Text>
-              <Text style={Styles.sets}>{entrega.quantidade}</Text>
+            <View style={Styles.text}>
+              <Text style={Styles.type}>Quantidade: </Text>
+              <Text style={Styles.set}>{entrega.quantidade}</Text>
             </View>
-          </View>
 
-          <View style={Styles.partdown}>
-            <View>
-              <Text style={Styles.type}>Horário:</Text>
+            <View style={Styles.text}>
+              <Text style={Styles.type}>Horário: </Text>
               <Text style={Styles.set}>{entrega.horario}</Text>
             </View>
 
-            <View>
-              <Text style={Styles.type}>Data:</Text>
+            <View style={Styles.text}>
+              <Text style={Styles.type}>Data: </Text>
               <Text style={Styles.set}>{entrega.data}</Text>
             </View>
-          </View>
-        </View>
+          
+  
 
-        <View style={Styles.layer}>
-          <View style={Styles.status}>
-            <Text style={Styles.type}>Status:</Text>
-            {entrega.status == 0 ? <Text style={Styles.set}>Aguardando resposta</Text> : <Text style={Styles.set}> Coletado</Text>}
-          </View>
+            <View style={Styles.text}>
+              <Text style={Styles.type}>Status: </Text>
+              {entrega.status == 0 ? <Text style={Styles.set}>Aguardando resposta</Text> : <Text style={Styles.set}> Coletado</Text>}
+            </View>
 
-          <View>
-            <Text style={Styles.type}>Endereço:</Text>
-            <Text style={Styles.set}>{entrega.endereco}</Text>
-          </View>
+            <View style={Styles.text}>
+              <Text style={Styles.type}>Endereço: </Text>
+              <Text style={Styles.set}>{entrega.endereco == "Instituto Federal de Alagoas Campos SMC" ? "Ifal" : "Acamare"}</Text>
+            </View>
 
-          <View>
-            <Text style={Styles.type}>Nome:</Text>
-            <Text style={Styles.set}>{entrega.nome}</Text>
+            <View style={Styles.text}>
+              <Text style={Styles.type}>Nome: </Text>
+              <Text style={Styles.set}>{entrega.usuario}</Text>
+            </View>
           </View>
-        </View>
         <View style={Styles.line}></View>
       </View>
 
       <View style={Styles.botton}>
         <TouchableOpacity  style={Styles.touch}>
           <Text style={Styles.texttouch}>Baixar em PDF</Text>
-          <Text style={Styles.icon}>Icon</Text>
+          <Icon style={Styles.icon} name="download" size={25} color="black" />
         </TouchableOpacity>
 
         <TouchableOpacity style={Styles.touch} onPress={()=> print()}>
           <Text style={Styles.texttouch}>Compartilhar</Text>
-          <Text style={Styles.icon}>Icon</Text>
+          <Icon style={Styles.icon} name="share-alt" size={25} color="black" />
         </TouchableOpacity>
       </View>
     </View>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import {Image, View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome"
-import firebase from '../../recursos/firebase';
+import firebase from '../../database/firebase';
 import * as ImagePicker from "expo-image-picker"
 import {getDownloadURL, ref, uploadBytes} from "firebase/storage"
 import Styles from './style';
 import { ScrollView } from 'react-native-gesture-handler';
-import crud from '../../recursos/crud';
+import crud from '../../services/userService';
 
 export default function SetProfile ({navigation, route}) {
   const [nome, setNome] = useState('');

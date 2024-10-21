@@ -1,19 +1,16 @@
 {
   "expo": {
-    "name": "ecotech1",
-    "slug": "ecotech1",
+    "name": "Ecotech",
+    "slug": "ecotechRefactor",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/logo-ecotech.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
     "ios": {
       "supportsTablet": true
     },
@@ -22,14 +19,14 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ifal.ecotech1_0"
+      "package": "com.arthurbit1.ecotechRefactor"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "763646c9-ff1f-4677-b1ea-67f09eafe063"
+        "projectId": "28a543a4-a58b-4b3c-8c34-ed98599888ce"
       }
     }
   }

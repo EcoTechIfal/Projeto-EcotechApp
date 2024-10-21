@@ -1,83 +1,75 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
-const Styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      flexDirection: 'column',
-    },
-    bottom: {
-      alignItems: "center",
-      backgroundColor: '#B0E9C1',
-      padding: 3,
-      marginBottom: 5,
-      borderRadius: 11,
-      width: 100,
-      
-    },
-    bloco: {
-      backgroundColor: "#B0E9C1",
-      alignItems: "center",
-      flexDirection:"row", 
-      paddingVertical:15,
-      paddingHorizontal: 10,
-    },
-    sair: {
-    alignItems: 'center',
-    backgroundColor: '#B0E9C1',
-    padding: 3,
-    marginBottom: 5,
-    borderRadius: 11,
-    position: 'absolute',
-    bottom: 0,
-    width: 100,
-    alignSelf: 'center',
-    flexDirection: 'row', 
-    justifyContent: 'center', 
-
-    },
-    acao:{
-      paddingVertical:25,
-      flexDirection: 'row', 
-      alignItems: 'center',
-      marginRight: 60,
-      gap:15,
-      
-   },
-   imagem: {
-   borderRadius: 100,
-   width: 100,
-   height: 100,
-   backgroundColor: 'black',
-   marginRight: 20,
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#f0f4f8', 
   },
-   textoContainer: {
-   flex: 1,
+  bloco: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+    backgroundColor: '#ffffff', 
+    borderRadius: 10,
+    padding: 15,
+    shadowColor: '#000', 
+  },
+  imagem: {
+    width: 80,
+    height: 80,
+    borderRadius: 40, 
+    marginRight: 15,
+  },
+  textoContainer: {
+    flex: 1,
   },
   textoNome: {
-    marginBottom: 5, 
-    
+    fontSize: 20,
+    fontWeight: 'bold'
   },
   textoFuncao: {
-    marginBottom: 5,
+    fontSize: 16,
+    color: '#7f8c8d', 
+  },
+  bottom: {
+    marginTop: 10,
+    padding: 10,
+    backgroundColor: '#B0E9C1',
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  acao: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 10,
+
   },
   iconeContainer: {
-  paddingHorizontal:10,
-
+    marginRight: 10,
+  },
+  sair: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 15,
+    borderRadius: 10,
+    backgroundColor: '#e74c3c',
+    position:'absolute',
+    bottom: 10,
+    left: '40%',
+    right: '40%',
+    width: 100
   },
   iconeSair: {
-      flexDirection: 'row', 
-      alignItems: 'center',
-      gap:15,
-      marginRight: 10,
-      marginVertical:5,
-
+    marginRight: 10,
   },
-  textoSair:{
-  fontSize: 16,
-  marginVertical:5,
-},
+  textoSair: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
 });
 
-export default Styles
-  
+export default styles;

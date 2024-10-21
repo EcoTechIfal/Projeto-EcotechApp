@@ -1,152 +1,95 @@
 import { StyleSheet } from 'react-native';
 
-const Styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 20,
   },
-  geral: {
-    backgroundColor: '#B0E9C1',
-    width: '100%',
-    height: '26.8%',
-    paddingLeft: 10,
-    paddingTop: 90,
-    bottom: 40,
-  },
-
   greeting: {
-    fontSize: 16,
+    fontSize: 24,
     fontWeight: 'bold',
-    color: '#000',
-    marginLeft: 10,
-    marginTop: 65,
   },
 
-  maça: {
-    backgroundColor: '#FFF',
+  container2: {
+    marginTop: 40,
+  },
+  maca: {
+    backgroundColor: '#ffffff', // Fundo branco para cada item
     padding: 15,
-    marginVertical: 5,
-    width: '90%',
-    borderRadius: 15,
-    marginBottom: 10,
-    marginTop: 20,
-    borderWidth: 2,
-    borderColor: '#000',
+    borderRadius: 10,
+    marginBottom: 10, // Espaçamento inferior
   },
-
-  setinha1: {
-    alignSelf: 'flex-end',
-    marginTop: -26,
-  },
-
   papel: {
-    alignSelf: 'flex-start',
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginTop: -10,
-    marginBottom: 10,
+    fontSize: 18,
+    color: '#2c3e50',
+  },
+  papel2: {
+    marginLeft: 10,
   },
 
+  mod:{
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  }, 
+
+  textMod:{
+    marginTop: 5,
+    padding: 20,
+  },
   button: {
-    backgroundColor: '#FFF',
-    fontSize: 24,
+    backgroundColor: '#ffffff',
     padding: 15,
-    marginVertical: 5,
-    width: '90%',
-    borderRadius: 15,
+    borderRadius: 10,
     marginBottom: 10,
-    borderWidth: 2,
-    borderColor: '#000',
   },
-
-  setinha2: {
-    alignSelf: 'flex-end',
-    marginTop: -26,
-  },
-
   vidro: {
-    alignSelf: 'flex-start',
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginTop: -10,
-    marginBottom: 10,
+    fontSize: 18,
+    color: '#2c3e50',
   },
-
+  vidro2: {
+    marginLeft: 10,
+  },
   mala: {
-    backgroundColor: '#FFF',
-    fontSize: 24,
+    backgroundColor: '#ffffff',
     padding: 15,
-    marginVertical: 5,
-    width: '90%',
-    borderRadius: 15,
-    marginBottom: 10,
-    borderWidth: 2,
-    borderColor: '#000',
-  },
-
-  setinha3: {
-    alignSelf: 'flex-end',
-    marginTop: -26,
-  },
-
-  plastico: {
-    alignSelf: 'flex-start',
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginTop: -10,
+    borderRadius: 10,
     marginBottom: 10,
   },
-
+  platico: {
+    fontSize: 18,
+    color: '#2c3e50',
+  },
+  platico2: {
+    marginLeft: 10,
+  },
   tiro: {
-    backgroundColor: '#FFF',
-    fontSize: 24,
+    backgroundColor: '#ffffff',
     padding: 15,
-    marginVertical: 5,
-    width: '90%',
-    borderRadius: 15,
-    borderWidth: 2,
-    borderColor: '#000',
+    borderRadius: 10,
   },
-
-  setinha4: {
-    alignSelf: 'flex-end',
-    marginTop: -26,
+  outros: {
+    fontSize: 18,
+    color: '#2c3e50',
   },
-
-  outros1: {
-    alignSelf: 'flex-start',
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginTop: -10,
-    marginBottom: 10,
+  outros2: {
+    marginLeft: 10,
   },
-
   etario: {
-    backgroundColor: '#76EF9A',
-    fontSize: 24,
-    color: '#2F2D2D',
-    padding: 15,
-    width: '90%',
-    borderRadius: 15,
-    marginTop: 100,
-    marginBottom: 100,
+    position:'absolute',
+    bottom: 20,
   },
-
   barril: {
-    alignItems: 'center',
-  },
-
-  pendencias: {
-    fontSize: 20,
-    fontWeigh: 'bold',
-  },
-  casinha: {
     backgroundColor: '#B0E9C1',
-    width: '100%',
-    height: 30,
-    paddingTop: 100,
+    padding: 15,
+    borderRadius: 10,
+    left: '78%',
+    width: 160,
+  },
+  pendencias: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    margin: 'auto',
   },
 });
-export default Styles;
+
+export default styles;

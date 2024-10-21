@@ -1,96 +1,63 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
-const Styles = StyleSheet.create({
-  //  parte de cima
+export default StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: "10%",
-    justifyContent: "space-between",
+    padding: 20,
+    backgroundColor: '#fff',
   },
-  main: {
-    gap: 15,
-    justifyContent: "space-evenly",
-    marginLeft: "10%",
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
   },
+
   partup: {
-    flexDirection: "row",
-  },
-  partdown: {
-    flexDirection: "row",
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    marginTop: 15,
   },
   type: {
-    fontSize: 12,
-    color: "#8C8F93",
-  },
-  types: {
-    fontSize: 12,
-    color: "#8C8F93",
-    right: "40% ",
-  },
-  sets: {
-    right: "40%",
-    fontSize: 14,
-    fontWeight: "500",
+    fontSize: 18,
+    fontWeight: '800',
+    marginBottom: 5,
   },
   set: {
-    fontSize: 14,
-    fontWeight: "500",
+    fontSize: 18,
+    fontWeight: '400',
   },
-  botton: {
-    flexDirection: "row",
-    alignSelf: "center",
-    bottom: "8%",
-    justifyContent: "space-between"
-  },
-  // titulo da coleta:
-  title: {
-    padding: "15%",
-  },
-
-  txt: {
-    fontSize: 17,
-    fontWeight: "500",
-    alignSelf: "center",
-  },
-  //termina aq ;
-
-  // parte de baixo
-
-  layer: {
-    marginLeft: "10%",
+  text: {
+    flexDirection: 'row',
+    marginBottom: 20,
+    
   },
   status: {
-    paddingTop: "5%",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
   },
-  // terminando;
-
-  //linha
   line: {
-    borderColor: "black",
-    borderWidth:1,
-    width: "90%",
-    marginTop: "15%",
-    margin: "5%",
-    marginBottom: "20%",
+    height: 1,
+    backgroundColor: '#ccc',
+    marginBottom: 20,
   },
-
-  //  botons
+  botton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   touch: {
-    backgroundColor: "#B0E9C1",
-    padding: 10,
-    flexDirection: "row",
-    borderRadius: 12,
-    alignItems: "center",
-    justifyContent: "center",
-    fontStyle: "inter",
+    backgroundColor: '#B0E9C1',
+    padding: 15,
+    borderRadius: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-
   texttouch: {
-    fontSize: 12,
+    fontSize: 16,
+    fontWeight: '600',
   },
   icon: {
-    fontSize: 12,
+    marginLeft: 10,
   },
 });
-
-export default Styles;

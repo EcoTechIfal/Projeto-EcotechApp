@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Picker, KeyboardAvoidingView, TouchableOpacity, Image } from 'react-native';
-import Styles from "./style"
-import firebase from '../../recursos/firebase';
+import firebase from '../../database/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import crud from '../../recursos/crud';
-import { buscarDados } from '../../funciotons/buscarDados';
+import crud from '../../services/userService';
 import styles from '../RegisterUser/style';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -69,7 +67,7 @@ export default function RegisterUser({ navigation }) {
 
                         <Image
                             style={styles.imgLogo}
-                            source={require('../../../assets/fundo.png')}
+                            source={require('../../assets/fundo.png')}
                             alt="Logo_icon"
                         />
                         <Text style={styles.title}>Faça seu cadastro</Text>
